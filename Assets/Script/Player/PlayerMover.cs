@@ -2,22 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMover : MonoBehaviour
+public class PlayerMover : MonoBehaviour
 {
     [SerializeField][Range(0.0f, 5.0f)] float speed = 1.0f;
 
     List<Node> path = new List<Node>();
     GridManager gridManager;
     PathFinder pathFinder;
-
-    /// <summary>
-    /// When object is enabled call methods to run the object
-    /// </summary>
-    void OnEnable()
-    {
-        ReturnToStart();    // Set object at start
-        RecalcuatePath(true); // Recalculates Path
-    }
 
     /// <summary>
     /// Inititialize variables
@@ -31,35 +22,14 @@ public class EnemyMover : MonoBehaviour
     /// <summary>
     /// Recalculates path
     /// </summary>
-    void RecalcuatePath(bool resetPath)
+    public void MovePath(List<Node> pathNode)
     {
-        Vector3 coordinates = Vector3.zero;
-
-        // Check if reseting path is true
-        if (resetPath)
-        {
-            coordinates = gridManager.GetPositionFromCoordinates(pathFinder.StartCoordinates);
-        }
-        else
-        {
-            coordinates = transform.position;
-        }
-
         StopAllCoroutines();    //Stops all coroutine
         // Clear current path stored
         // So that path starts empty  
         path.Clear();
-        //path = pathFinder.GetNewPath(coordinates);
-
+        path = pathNode;
         StartCoroutine(FollowPath());   // Start a coroutine
-    }
-
-    /// <summary>
-    /// Return object back to start of path
-    /// </summary>
-    void ReturnToStart()
-    {
-        transform.position = gridManager.GetPositionFromCoordinates(pathFinder.StartCoordinates);
     }
 
     /// <summary>
@@ -101,6 +71,6 @@ public class EnemyMover : MonoBehaviour
     private void FinishPath()
     {
         // Deactivate game object after reaching the end of the path
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 }

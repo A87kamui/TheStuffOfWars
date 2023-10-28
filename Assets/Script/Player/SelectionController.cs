@@ -7,13 +7,13 @@ public class SelectionController : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private List<GameObject> selectedList = new List<GameObject>();
     private Vector3 anchor;
-    bool isSelected = false;
+    [SerializeField] bool isSelected = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        transform.position = new Vector3(-10f, 0.5f, -10f);
     }
 
     // Update is called once per frame
@@ -32,10 +32,13 @@ public class SelectionController : MonoBehaviour
             }
             else
             {
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("TileLayer"));
                 //Set Destination
                 foreach (GameObject gameObject in selectedList)
                 {
-                    //gameObject.GetComponent<PathFinder>().GetNewPath()
+                    gameObject.GetComponent<PathFinder>().GetNewPath(hit.transform.position);
                 }
             }
         }
@@ -77,8 +80,8 @@ public class SelectionController : MonoBehaviour
 
     //Remove the troops that are not inside the selection window from the list of selected troops
     private void OnTriggerExit(Collider other)
-    { 
-        if (other.gameObject.CompareTag("Selectable") && selectedList.Contains(other.gameObject))
+    {
+        if (!isSelected && other.gameObject.CompareTag("Selectable") && selectedList.Contains(other.gameObject))
         {
             selectedList.Remove(other.gameObject);
         }

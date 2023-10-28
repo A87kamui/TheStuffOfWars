@@ -19,6 +19,8 @@ public class PathFinder : MonoBehaviour
     Node destinationNode;
     Node currentSearchNode;
 
+    [SerializeField] private PlayerMover player;
+
     // Store nodes in order of f value
     PriorityQueue<Node> openQueue = new PriorityQueue<Node>();
 
@@ -45,7 +47,7 @@ public class PathFinder : MonoBehaviour
     private void Awake()
     {
         gridManager = FindObjectOfType<GridManager>();
-        startCoordinates = new Vector2Int((int)transform.position.x, (int)transform.position.z);
+        startCoordinates = gridManager.GetCoordinatesFromPosition(transform.position);
         if (gridManager != null)
         {
             grid = gridManager.Grid;
@@ -63,27 +65,25 @@ public class PathFinder : MonoBehaviour
     }
 
     /// <summary>
-    /// Finds path by reseting all nodes 
-    /// </summary>
-    /// <returns></returns>
-    public List<Node> GetNewPath()
-    {
-        // Build the path with call to overloaded method
-        return GetNewPath(startCoordinates);
-    }
-
-    /// <summary>
     /// Finds new path by reseting all nodes
     /// And passing in destination coordinates
     /// </summary>
     /// <returns></returns>
-    public List<Node> GetNewPath(Vector2Int coordinates)
+    public void GetNewPath(Vector3 coordinates)
     {
-        startCoordinates = new Vector2Int((int)transform.position.x, (int)transform.position.z);
-        destinationCoordinates = coordinates;
+        startCoordinates = gridManager.GetCoordinatesFromPosition(transform.position);
+        destinationCoordinates = gridManager.GetCoordinatesFromPosition(coordinates);
         gridManager.ResetNodes();   // Reset all nodes to initial state
+        if (gridManager != null)
+        {
+            grid = gridManager.Grid;
+            // Create the starting node
+            startNode = grid[startCoordinates];
+            // Create the destination node
+            destinationNode = grid[destinationCoordinates];
+        }
         AStarSearch(startCoordinates);
-        return BuildPath();    // Build the path
+        player.MovePath(BuildPath());    // Build the path
     }
 
     /// <summary>
@@ -304,39 +304,6 @@ public class PathFinder : MonoBehaviour
         // Reverise the list so it goes from starting to destintion
         path.Reverse();
         return path;
-    }
-
-    /// <summary>
-    /// Make an adjustment to the node with the coordinates that is passed in
-    /// Then checks if BFS can find a path through it
-    /// If path is blocked, returns true
-    /// If it finds a path, returns false
-    /// </summary>
-    /// <param name="coordinates"></param>
-    /// <returns></returns>
-    public bool WillBlockPath(Vector2Int coordinates)
-    {
-        // Check if coordinates in grid is valid
-        if (grid.ContainsKey(coordinates))
-        {
-            // Store previous state
-            bool previousState = grid[coordinates].isWalkable;
-            // Change tile's isWalkable state to false
-            grid[coordinates].isWalkable = false;
-            List<Node> newPath = GetNewPath();  // Get new path after node state update
-            // Change tile's isWalkable state back to previous state
-            grid[coordinates].isWalkable = previousState;
-
-            // If new path is <= 1 then path is blocked
-            // Need to recalcuate a new path again
-            if (newPath.Count <= 1)
-            {
-                GetNewPath();
-                return true;
-            }
-        }
-
-        return false;
     }
 
     /// <summary>
