@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Level1Base : MonoBehaviour
+public class Level3Base : MonoBehaviour
 {
     GameObject[] pool;
     [SerializeField] GameObject cubePrefab;

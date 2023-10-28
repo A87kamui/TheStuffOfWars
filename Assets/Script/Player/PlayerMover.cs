@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField][Range(0.0f, 5.0f)] float speed = 1.0f;
+    [SerializeField] Animator animator;
 
     List<Node> path = new List<Node>();
     GridManager gridManager;
@@ -25,6 +26,7 @@ public class PlayerMover : MonoBehaviour
     public void MovePath(List<Node> pathNode)
     {
         StopAllCoroutines();    //Stops all coroutine
+
         // Clear current path stored
         // So that path starts empty  
         path.Clear();
@@ -38,13 +40,15 @@ public class PlayerMover : MonoBehaviour
     /// </summary>
     IEnumerator FollowPath()
     {
+        animator.SetBool("isWalking", true);
+
         //yield return new WaitForSeconds(1.0f); = Wait for 1 second then continue
         for (int i = 1; i < path.Count; i++)
         {
             Vector3 startPosition = transform.position; // Store starting position
             Vector3 endPosition = gridManager.GetPositionFromCoordinates(path[i].coordinates);  // Store ending position
             float travelPercent = 0.0f; // Value to represent the travel percent in Vector3.LERP
-
+            //endPosition += new Vector3(0.0f, 2.5f, 0.0f);   // Make object stay above ground
             // Always face the endPosition
             transform.LookAt(endPosition);
 
@@ -70,6 +74,7 @@ public class PlayerMover : MonoBehaviour
     /// </summary>
     private void FinishPath()
     {
+        animator.SetBool("isWalking", false);
         // Deactivate game object after reaching the end of the path
         //gameObject.SetActive(false);
     }

@@ -2,16 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Level0Base : MonoBehaviour
 {
     GameObject[] pool;
     [SerializeField] GameObject cubePrefab;
-    [SerializeField][Range(0, 50)] int poolSize = 10;
+    [SerializeField][Range(0, 50)] int poolSize = 7;
     [SerializeField] GameObject spawner;
-    [SerializeField] float timer = 3.0f;
     [SerializeField] bool ableToSpawn = true;
     int count = 0;
+
+    public Slider timerSlider;
+    [SerializeField] float timer = 3f;
+    float currentTimer = 0;
 
     /// <summary>
     /// Calls method to populate pool
@@ -20,7 +24,6 @@ public class Level0Base : MonoBehaviour
     {
         PopulatePool();
     }
-
 
     /// <summary>
     /// Instantiate objects to pool array
@@ -40,19 +43,29 @@ public class Level0Base : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        timerSlider.maxValue = timer;   // The number to go up to
+        timerSlider.value = 0;  // Initial value
+        timerSlider.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        CreateObstacle();
+        CreateTroop();
+        if (timerSlider.gameObject.activeInHierarchy == true)
+        {
+            // fill the fill object on slider
+            currentTimer += Time.deltaTime;
+            timerSlider.value = currentTimer;
+            Debug.Log("Timer: " + timerSlider.value);
+        } 
+
     }
 
     /// <summary>
     /// Create a obstacle with right moust click
     /// </summary>
-    private void CreateObstacle()
+    private void CreateTroop()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -61,22 +74,9 @@ public class Level0Base : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             bool didHit = Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("TowerLayer"));
 
-            if (didHit && hit.collider.tag == "Tower")
+            if (didHit && hit.collider.tag == "Tower" && hit.transform == transform)
             {
                 StartCoroutine(SpawnTimer());
-                /*if (count >= poolSize)
-                {
-                    count = 0;
-                    pool[count].SetActive(false);
-                }
-
-                pool[count].transform.position = spawner.transform.position;
-
-                if (timer <= 0)
-                {
-                    pool[count].SetActive(true);
-                    count++;
-                }//*/
             }   
             else
             {
@@ -91,15 +91,16 @@ public class Level0Base : MonoBehaviour
     /// <returns></returns>
     IEnumerator SpawnTimer()
     {
-        Debug.Log("SpawnTimer called");
         if (ableToSpawn)
         {
-            Debug.Log("waiting");
             ableToSpawn = false;
+            timerSlider.gameObject.SetActive(true);
+            currentTimer = 0;
+            timerSlider.value = 0;
             yield return new WaitForSeconds(timer);
             SpawnTroop();
             ableToSpawn = true;
-            Debug.Log("able to spawn = true");
+            timerSlider.gameObject.SetActive(false);  
         }   
     }
 
@@ -108,8 +109,6 @@ public class Level0Base : MonoBehaviour
     /// </summary>
     private void SpawnTroop()
     {
-
-        Debug.Log("SpawnTroop");
         if (count >= poolSize)
         {
             // Need to fix.

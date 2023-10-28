@@ -34,11 +34,14 @@ public class SelectionController : MonoBehaviour
             {
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("TileLayer"));
+                bool didHit = Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("TileLayer"));
                 //Set Destination
                 foreach (GameObject gameObject in selectedList)
                 {
-                    gameObject.GetComponent<PathFinder>().GetNewPath(hit.transform.position);
+                    if (didHit)
+                    {
+                        gameObject.GetComponent<PathFinder>().GetNewPath(hit.transform.position);
+                    }
                 }
             }
         }
