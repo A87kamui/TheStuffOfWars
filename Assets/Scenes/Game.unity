@@ -4349,7 +4349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea112b4172c841c1b17cbd471022cc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubePrefab: {fileID: 5838271325680791147, guid: cb090d0786cac4975be85524ab1ab7b5, type: 3}
+  cubePrefab: {fileID: 7039569717868503834, guid: ebc332323dbf14775a9cc99a3bd9f3ca, type: 3}
   poolSize: 5
   spawner: {fileID: 1811086395}
   ableToSpawn: 1
@@ -10085,7 +10085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e468ba6ed7ad4ae6a53764ab275bdd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubePrefab: {fileID: 1908956491730731801, guid: 42577d66a022946728764a6cf84596d2, type: 3}
+  cubePrefab: {fileID: 7039569717868503834, guid: ebc332323dbf14775a9cc99a3bd9f3ca, type: 3}
   poolSize: 5
   spawner: {fileID: 1811086395}
   ableToSpawn: 1
@@ -13238,7 +13238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a55d4ebf033402b8d57ff1a1fb13a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubePrefab: {fileID: 2996668954243522955, guid: 7b698e0d1e7724099b83552fcaafeae6, type: 3}
+  cubePrefab: {fileID: 7039569717868503834, guid: ebc332323dbf14775a9cc99a3bd9f3ca, type: 3}
   poolSize: 3
   spawner: {fileID: 1811086395}
   ableToSpawn: 1
