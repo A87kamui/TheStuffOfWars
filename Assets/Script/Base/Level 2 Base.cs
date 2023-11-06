@@ -56,7 +56,7 @@ public class Level2Base : MonoBehaviour
             // fill the fill object on slider
             currentTimer += Time.deltaTime;
             timerSlider.value = currentTimer;
-            Debug.Log("Timer: " + timerSlider.value);
+           
         }
     }
 

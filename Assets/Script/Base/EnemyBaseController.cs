@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Level1Base : MonoBehaviour
+public class EnemyBaseController : MonoBehaviour
 {
     GameObject[] pool;
-    [SerializeField] GameObject cubePrefab;
-    [SerializeField][Range(0, 50)] int poolSize = 5;
+    [SerializeField] GameObject troopPrefab;
+    [SerializeField][Range(0, 50)] int poolSize = 7;
     [SerializeField] GameObject spawner;
     [SerializeField] bool ableToSpawn = true;
     int count = 0;
@@ -34,7 +34,7 @@ public class Level1Base : MonoBehaviour
         for (int i = 0; i < pool.Length; i++)
         {
             // Instantiate an enemy at parent's transform position
-            pool[i] = Instantiate(cubePrefab, transform);
+            pool[i] = Instantiate(troopPrefab, spawner.transform);
             pool[i].SetActive(false);
         }
     }
@@ -56,7 +56,7 @@ public class Level1Base : MonoBehaviour
             // fill the fill object on slider
             currentTimer += Time.deltaTime;
             timerSlider.value = currentTimer;
-            Debug.Log("Timer: " + timerSlider.value);
+            
         }
     }
 
@@ -65,22 +65,7 @@ public class Level1Base : MonoBehaviour
     /// </summary>
     private void CreateTroop()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            bool didHit = Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("TowerLayer"));
-
-
-            if (didHit && hit.collider.tag == "Tower" && hit.transform == transform)
-            {
-                StartCoroutine(SpawnTimer());
-            }
-            else
-            {
-                return;
-            }
-        }
+        StartCoroutine(SpawnTimer());
     }
 
     /// <summary>
@@ -107,12 +92,19 @@ public class Level1Base : MonoBehaviour
     /// </summary>
     private void SpawnTroop()
     {
+        // Loop to active troops back from the start
         if (count >= poolSize)
         {
+            ableToSpawn = false;
+            return;
             // Need to fix.
             count = 0;
             pool[count].SetActive(false);
         }
+
+        //---------------------------NEED to add check for number of troops active
+        //---------------------------If number of troops active < poolSize = keep spawning new troops
+
 
         pool[count].transform.position = spawner.transform.position;
 

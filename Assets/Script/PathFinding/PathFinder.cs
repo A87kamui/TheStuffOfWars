@@ -87,6 +87,28 @@ public class PathFinder : MonoBehaviour
     }
 
     /// <summary>
+    /// Finds new path by reseting all nodes
+    /// And passing in destination coordinates
+    /// </summary>
+    /// <returns></returns>
+    public List<Node> GetEnemyNewPath(Vector3 coordinates)
+    {
+        startCoordinates = gridManager.GetCoordinatesFromPosition(transform.position);
+        destinationCoordinates = gridManager.GetCoordinatesFromPosition(coordinates);
+        gridManager.ResetNodes();   // Reset all nodes to initial state
+        if (gridManager != null)
+        {
+            grid = gridManager.Grid;
+            // Create the starting node
+            startNode = grid[startCoordinates];
+            // Create the destination node
+            destinationNode = grid[destinationCoordinates];
+        }
+        AStarSearch(startCoordinates);
+        return BuildPath();    // Build the path
+    }
+
+    /// <summary>
     /// Search with AStarSearch for neighbor nodes until destination is found
     /// </summary>
     void AStarSearch(Vector2Int coordinates)

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    [SerializeField] bool isPlaceable;
+    [SerializeField] bool isWalkable;
 
     /// <summary>
     /// A property to get isPlaceable variable
     /// Name used is the same as the return variable but
     /// starts with uppercase 
     /// </summary>
-    public bool IsPlaceable { get { return isPlaceable; } }
+    public bool IsWalkable { get { return isWalkable; } }
 
     GridManager gridManager;    // Access to GridManager script
     Vector2Int coordinates = new Vector2Int();  // Store tile's coordinate
@@ -36,7 +36,7 @@ public class Tile : MonoBehaviour
 
             // If tile is not placeable
             // Set is as blocked
-            if (!IsPlaceable)
+            if (!IsWalkable)
             {
                 gridManager.BlockNode(coordinates);
             }

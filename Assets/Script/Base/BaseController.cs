@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Level0Base : MonoBehaviour
+public class BaseController : MonoBehaviour
 {
     GameObject[] pool;
     [SerializeField] GameObject cubePrefab;
@@ -57,7 +57,6 @@ public class Level0Base : MonoBehaviour
             // fill the fill object on slider
             currentTimer += Time.deltaTime;
             timerSlider.value = currentTimer;
-            Debug.Log("Timer: " + timerSlider.value);
         } 
 
     }

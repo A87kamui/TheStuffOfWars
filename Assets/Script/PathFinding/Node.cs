@@ -7,7 +7,7 @@ public class Node
 {
     public Vector2Int coordinates;
     public Node parent;    // Store connected node
-    public bool isWalkable; // Will check if node can be added to tree or not
+    public bool isWalkable; // Will check if node is walkable or not
     public bool isExplored; // Check if node was already explored
     public bool isPath; // Check if node is in path
     public int f, g, h;
