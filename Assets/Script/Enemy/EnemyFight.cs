@@ -12,6 +12,7 @@ public class EnemyFight : MonoBehaviour
     [SerializeField] Transform parentTransform;
     [SerializeField] float turnSpeed = 1.0f;
     [SerializeField][Range(0.0f, 10.0f)] public float speed = 10.0f;
+    [SerializeField] float obstacleBumpSpeed;
 
     float radiusOfSatisfaction = 1.0f;
     bool foundPlayer = false;
@@ -31,11 +32,12 @@ public class EnemyFight : MonoBehaviour
         }
     }
 
+
     /// <summary>
     /// Detect player inside collision 
     /// </summary>
     /// <param name="collision"></param>
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Selectable" && !foundPlayer)
         {
@@ -43,9 +45,7 @@ public class EnemyFight : MonoBehaviour
             enemyMover.StopCoroutines();
             foundPlayer = true;
         }
-    }//*/
-
-
+    }
 
     /// <summary>
     /// Recalculates path

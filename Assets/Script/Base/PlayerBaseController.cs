@@ -1,10 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BaseController : MonoBehaviour
+public class PlayerBaseController : MonoBehaviour
 {
     GameObject[] pool;
     [SerializeField] GameObject troopPrefab;
@@ -14,7 +13,9 @@ public class BaseController : MonoBehaviour
     int count = 0;
 
     public Slider timerSlider;
+    public Slider heatlhSlider;
     [SerializeField] float timer = 3f;
+    [SerializeField] float healthTotal = 100.0f;
     float currentTimer = 0;
 
     /// <summary>
@@ -46,6 +47,8 @@ public class BaseController : MonoBehaviour
         timerSlider.maxValue = timer;   // The number to go up to
         timerSlider.value = 0;  // Initial value
         timerSlider.gameObject.SetActive(false);
+        heatlhSlider.maxValue = healthTotal;
+        heatlhSlider.value = healthTotal;
     }
 
     // Update is called once per frame
@@ -57,7 +60,7 @@ public class BaseController : MonoBehaviour
             // fill the fill object on slider
             currentTimer += Time.deltaTime;
             timerSlider.value = currentTimer;
-        } 
+        }
 
     }
 
@@ -68,7 +71,7 @@ public class BaseController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            
+
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             bool didHit = Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("TowerLayer"));
@@ -76,7 +79,7 @@ public class BaseController : MonoBehaviour
             if (didHit && hit.collider.tag == "Tower" && hit.transform == transform)
             {
                 StartCoroutine(SpawnTimer());
-            }   
+            }
             else
             {
                 return;
@@ -99,8 +102,8 @@ public class BaseController : MonoBehaviour
             yield return new WaitForSeconds(timer);
             SpawnTroop();
             ableToSpawn = true;
-            timerSlider.gameObject.SetActive(false);  
-        }   
+            timerSlider.gameObject.SetActive(false);
+        }
     }
 
     /// <summary>

@@ -12,6 +12,7 @@ public class EnemyMover : MonoBehaviour
     PathFinder pathFinder;
     [SerializeField] Animator animator;
     [SerializeField] Vector3 towardsTarget;
+    [SerializeField] float obstacleBumpSpeed;
 
     float radiusOfSatisfaction = 1.5f;
     bool reachedRadiusOfSatisfaction = false;
@@ -104,6 +105,38 @@ public class EnemyMover : MonoBehaviour
 
         FinishPath();
     }
+
+    /// <summary>
+    /// Move around obsticles
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnCollisionStay(Collision collision)
+    {
+
+        if (collision.gameObject.tag != "Obstacle")
+            return;
+
+        // Calculate vector from player to obstacle
+        Vector3 toObstacle = collision.gameObject.transform.position - transform.position;
+        toObstacle.Normalize();
+        toObstacle.y = 0f;
+
+        //Debug.DrawRay(trans.position + Vector3.up, toObstacle, Color.yellow);
+        //Debug.DrawRay(trans.position + Vector3.up, trans.right, Color.cyan);
+
+        float dot = Vector3.Dot(transform.right, toObstacle);
+        //print(dot);
+
+        // Obstacle is on the left of the obstacle -> push player right
+        if (dot < 0f)
+        {
+            transform.position += transform.right * obstacleBumpSpeed * Time.deltaTime;
+        }
+        else
+        {
+            transform.position += transform.right * -1f * obstacleBumpSpeed * Time.deltaTime;
+        }
+    }//*/
 
     private bool CheckRadiusOfSatisfaction()
     {
