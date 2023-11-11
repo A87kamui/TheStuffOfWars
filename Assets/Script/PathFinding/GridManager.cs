@@ -9,6 +9,7 @@ public class GridManager : MonoBehaviour
 
     [Tooltip("Unity Grid Size = Should match UnityEditor snap settings")]
     [SerializeField] int unityGridSize = 10;    // 10 to match Snap setting 
+    public static GridManager instance;
 
     /// <summary>
     /// Property to get unityGridSize
@@ -29,6 +30,7 @@ public class GridManager : MonoBehaviour
     private void Awake()
     {
         CreateGrid();
+        instance = this;
     }
 
     /// <summary>

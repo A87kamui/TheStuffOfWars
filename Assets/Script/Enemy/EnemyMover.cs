@@ -12,7 +12,7 @@ public class EnemyMover : MonoBehaviour
     PathFinder pathFinder;
     [SerializeField] Animator animator;
     [SerializeField] Vector3 towardsTarget;
-    [SerializeField] float obstacleBumpSpeed;
+    [SerializeField] float obstacleBumpSpeed = 1.0f;
 
     float radiusOfSatisfaction = 1.5f;
     bool reachedRadiusOfSatisfaction = false;
@@ -24,7 +24,7 @@ public class EnemyMover : MonoBehaviour
     /// </summary>
     void OnEnable()
     {
-        ReturnToStart();    // Set object at start
+        //ReturnToStart();    // Set object at start
         RecalcuatePath(true); // Recalculates Path
     }
 

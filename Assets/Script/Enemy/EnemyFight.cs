@@ -11,7 +11,7 @@ public class EnemyFight : MonoBehaviour
     [SerializeField] Vector3 towardsTarget;
     [SerializeField] Transform parentTransform;
     [SerializeField] float turnSpeed = 1.0f;
-    [SerializeField][Range(0.0f, 10.0f)] public float speed = 10.0f;
+    [SerializeField][Range(0.0f, 10.0f)] public float speed = 1.0f;
     [SerializeField] float obstacleBumpSpeed;
 
     float radiusOfSatisfaction = 1.0f;
@@ -52,7 +52,6 @@ public class EnemyFight : MonoBehaviour
     /// </summary>
     void RunKinematicArrive()
     {
-
         towardsTarget = playerTroop.position - parentTransform.position;
 
         // Check to see if the character is close enough to the target

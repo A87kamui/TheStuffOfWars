@@ -13,6 +13,10 @@ PrefabInstance:
       value: Water1
       objectReference: {fileID: 0}
     - target: {fileID: 3177010015003074795, guid: c766cd609001e4c3a8fd9647c980b954, type: 3}
+      propertyPath: isWalkable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3177010015003074795, guid: c766cd609001e4c3a8fd9647c980b954, type: 3}
       propertyPath: isPlaceable
       value: 0
       objectReference: {fileID: 0}
@@ -61,8 +65,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -2432090755550338912, guid: a847eae99d42cdf49b01d8ca9f52e595, type: 3}
     - target: {fileID: 7958060898917117929, guid: c766cd609001e4c3a8fd9647c980b954, type: 3}
+      propertyPath: m_text
+      value: 0, 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958060898917117929, guid: c766cd609001e4c3a8fd9647c980b954, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7958060898917117929, guid: c766cd609001e4c3a8fd9647c980b954, type: 3}
       propertyPath: m_fontColor.b
@@ -75,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 7958060898917117929, guid: c766cd609001e4c3a8fd9647c980b954, type: 3}
       propertyPath: m_fontColor.r
       value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958060898917117929, guid: c766cd609001e4c3a8fd9647c980b954, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4286611584
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

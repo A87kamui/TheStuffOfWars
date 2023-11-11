@@ -112,7 +112,7 @@ public class CoordinateLabeler : MonoBehaviour
         coordinates.x = Mathf.RoundToInt(transform.parent.position.x / gridManager.UnityGridSize);
         coordinates.y = Mathf.RoundToInt(transform.parent.position.z / gridManager.UnityGridSize);
 
-        label.text = coordinates.x + ", " + coordinates.y;
+        label.text = coordinates.y + ", " + coordinates.x;
     }
 
     /// <summary>
@@ -120,6 +120,7 @@ public class CoordinateLabeler : MonoBehaviour
     /// </summary>
     void UpdateObjectName()
     {
-        transform.parent.name = coordinates.ToString();
+        //transform.parent.name = coordinates.ToString();
+        transform.parent.name = coordinates.y + ", " + coordinates.x;
     }
 }

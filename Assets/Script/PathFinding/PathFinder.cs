@@ -104,6 +104,7 @@ public class PathFinder : MonoBehaviour
             // Create the destination node
             destinationNode = grid[destinationCoordinates];
         }
+
         AStarSearch(startCoordinates);
         return BuildPath();    // Build the path
     }
@@ -113,8 +114,8 @@ public class PathFinder : MonoBehaviour
     /// </summary>
     void AStarSearch(Vector2Int coordinates)
     {
-        startNode.isWalkable = true;
-        destinationNode.isWalkable = true;
+        //startNode.isWalkable = true;
+        //destinationNode.isWalkable = true;
 
         //nodeOpenList.Clear();   // Clears open list
         openQueue.ClearQueue();

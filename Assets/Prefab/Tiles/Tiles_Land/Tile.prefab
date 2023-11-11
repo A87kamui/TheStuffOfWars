@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4446991653818329853}
   - component: {fileID: 3495333884294934955}
   - component: {fileID: 3177010015003074795}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,8 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9618848b1f1142aeb08d6fed8f18f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 5921461404757639083, guid: 8a965e088bae16643aab3d07ccfd5e2e, type: 3}
-  isPlaceable: 1
+  isWalkable: 1
 --- !u!1 &3781882294411916897
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,7 +80,7 @@ GameObject:
   - component: {fileID: 5390209067830273370}
   - component: {fileID: 7069228418927090704}
   - component: {fileID: 5998596705608398980}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +164,7 @@ GameObject:
   - component: {fileID: 2676442731046361706}
   - component: {fileID: 7958060898917117929}
   - component: {fileID: 3269718589071360140}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +252,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0, 0
+  m_text: 14, 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -339,3 +338,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   blockColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  exploredColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  pathColor: {r: 1, g: 0.5, b: 0, a: 1}

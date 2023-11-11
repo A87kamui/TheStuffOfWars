@@ -23,6 +23,7 @@ public class BaseController : MonoBehaviour
     void Awake()
     {
         PopulatePool();
+        timerSlider.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -40,12 +41,13 @@ public class BaseController : MonoBehaviour
         }
     }
 
+
+
     // Start is called before the first frame update
     void Start()
     {
         timerSlider.maxValue = timer;   // The number to go up to
         timerSlider.value = 0;  // Initial value
-        timerSlider.gameObject.SetActive(false);
     }
 
     // Update is called once per frame

@@ -9,6 +9,10 @@ public class SelectionController : MonoBehaviour
     private Vector3 anchor;
     [SerializeField] bool isSelected = false;
 
+    private void Awake()
+    {
+        
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -35,14 +39,20 @@ public class SelectionController : MonoBehaviour
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 bool didHit = Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("TileLayer"));
-                //Set Destination
-                foreach (GameObject gameObject in selectedList)
+
+                Vector2Int temp = GridManager.instance.GetCoordinatesFromPosition(hit.transform.position);
+                if (GridManager.instance.GetNode(temp).isWalkable)
                 {
-                    if (didHit)
+                    //Set Destination
+                    foreach (GameObject gameObject in selectedList)
                     {
-                        gameObject.GetComponent<PathFinder>().GetNewPath(hit.transform.position);
+                        if (didHit)
+                        {
+                            gameObject.GetComponent<PathFinder>().GetNewPath(hit.transform.position);
+                        }
                     }
                 }
+                
             }
         }
         //Expands the selection window towards the mouse

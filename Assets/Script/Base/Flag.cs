@@ -6,6 +6,8 @@ public class Flag : MonoBehaviour
 {
     float timer = 5.0f;
     [SerializeField] BaseController baseController;
+    [SerializeField] EnemyBasesController enemyBasesController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,8 +27,8 @@ public class Flag : MonoBehaviour
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
-                Debug.Log("Captured based");
                 baseController.enabled = true;
+                enemyBasesController.enabled = true;
                 Destroy(this);
             }
         }
