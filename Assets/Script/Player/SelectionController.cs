@@ -52,7 +52,6 @@ public class SelectionController : MonoBehaviour
                         }
                     }
                 }
-                
             }
         }
         //Expands the selection window towards the mouse

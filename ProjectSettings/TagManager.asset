@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - Obstacle
   - Flag
+  - PlayerTower
+  - EnemyTower
   layers:
   - Default
   - TransparentFX

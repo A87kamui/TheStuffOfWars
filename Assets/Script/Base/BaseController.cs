@@ -41,8 +41,6 @@ public class BaseController : MonoBehaviour
         }
     }
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -62,7 +60,7 @@ public class BaseController : MonoBehaviour
         } 
 
     }
-
+    
     /// <summary>
     /// Create a obstacle with right moust click
     /// </summary>
@@ -75,7 +73,7 @@ public class BaseController : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             bool didHit = Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("TowerLayer"));
 
-            if (didHit && hit.collider.tag == "Tower" && hit.transform == transform)
+            if (didHit && hit.transform == transform)
             {
                 StartCoroutine(SpawnTimer());
             }   

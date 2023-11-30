@@ -7,9 +7,10 @@ public class EnemyBasesController : MonoBehaviour
     GameObject[] pool;
     [SerializeField] GameObject troopPrefab;
     [SerializeField][Range(0, 50)] int poolSize = 7;
-    [SerializeField] GameObject spawner;
+    [SerializeField] GameObject[] spawner;
     [SerializeField] bool ableToSpawn = true;
     int count = 0;
+    int spawnerNumber;
 
     [SerializeField] float timer = 3f;
 
@@ -83,7 +84,8 @@ public class EnemyBasesController : MonoBehaviour
             pool[count].SetActive(false);
         }
 
-        pool[count].transform.position = spawner.transform.position;
+        spawnerNumber = Random.Range(0, 2);
+        pool[count].transform.position = spawner[spawnerNumber].transform.position;
         pool[count].SetActive(true);
         count++;
     }

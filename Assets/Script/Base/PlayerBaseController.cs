@@ -76,7 +76,7 @@ public class PlayerBaseController : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             bool didHit = Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("TowerLayer"));
 
-            if (didHit && hit.collider.tag == "Tower" && hit.transform == transform)
+            if (didHit && hit.transform == transform)
             {
                 StartCoroutine(SpawnTimer());
             }

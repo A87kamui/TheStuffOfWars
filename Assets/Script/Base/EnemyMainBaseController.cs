@@ -105,7 +105,6 @@ public class EnemyMainBaseController : MonoBehaviour
         //---------------------------NEED to add check for number of troops active
         //---------------------------If number of troops active < poolSize = keep spawning new troops
         spawnerNumber = Random.Range(0, 2);
-        Debug.Log("SpawnerNumber: " + spawnerNumber);
         pool[count].transform.position = spawner[spawnerNumber].transform.position;
 
         pool[count].SetActive(true);

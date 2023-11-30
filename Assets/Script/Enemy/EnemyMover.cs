@@ -80,7 +80,7 @@ public class EnemyMover : MonoBehaviour
     {
         animator.SetBool("isWalking", true);
         //yield return new WaitForSeconds(1.0f); = Wait for 1 second then continue
-        for (int i = 1; i < path.Count; i++)
+        for (int i = 1; i < path.Count-1; i++)
         {
             Vector3 startPosition = transform.position; // Store starting position
             Vector3 endPosition = gridManager.GetPositionFromCoordinates(path[i].coordinates);  // Store ending position

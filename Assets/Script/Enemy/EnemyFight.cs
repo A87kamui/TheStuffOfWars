@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,8 +6,7 @@ using UnityEngine;
 public class EnemyFight : MonoBehaviour
 {
     public EnemyMover enemyMover;
-    public Transform playerTroop;
-
+    public Transform target;
 
     [SerializeField] Vector3 towardsTarget;
     [SerializeField] Transform parentTransform;
@@ -14,8 +14,8 @@ public class EnemyFight : MonoBehaviour
     [SerializeField][Range(0.0f, 10.0f)] public float speed = 1.0f;
     [SerializeField] float obstacleBumpSpeed;
 
-    float radiusOfSatisfaction = 1.0f;
-    bool foundPlayer = false;
+    float radiusOfSatisfaction = 3.0f;
+    bool found = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,12 +26,11 @@ public class EnemyFight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (foundPlayer)
+        if (found)
         {
             RunKinematicArrive();
         }
     }
-
 
     /// <summary>
     /// Detect player inside collision 
@@ -39,11 +38,11 @@ public class EnemyFight : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Selectable" && !foundPlayer)
+        if ((other.gameObject.tag == "Selectable" || other.gameObject.tag == "PlayerTower") && !found)
         {
-            playerTroop = other.gameObject.transform;
-            enemyMover.StopCoroutines();
-            foundPlayer = true;
+            target = other.gameObject.transform;
+            enemyMover.StopCoroutines();    // This stops A* movement
+            found = true;
         }
     }
 
@@ -52,7 +51,7 @@ public class EnemyFight : MonoBehaviour
     /// </summary>
     void RunKinematicArrive()
     {
-        towardsTarget = playerTroop.position - parentTransform.position;
+        towardsTarget = target.position - parentTransform.position;
 
         // Check to see if the character is close enough to the target
         if (towardsTarget.magnitude <= radiusOfSatisfaction)
@@ -82,11 +81,11 @@ public class EnemyFight : MonoBehaviour
     /// <param name="other"></param>
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Selectable" && foundPlayer)
+        if (other.gameObject.tag == "Selectable" && found)
         {
-            if (other.gameObject == playerTroop.gameObject)
+            if (other.gameObject == target.gameObject)
             {
-                foundPlayer = false;
+                found = false;
                 enemyMover.RecalcuatePath(true);
             }   
         }
