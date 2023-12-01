@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3a17e25f5719f42b8a7fcd6c5418816a, type: 2}
+    - target: {fileID: 6316684880766491958, guid: 71804c346ec6446508af15ed0bbcd29a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7039569717868503834, guid: 71804c346ec6446508af15ed0bbcd29a, type: 3}
       propertyPath: m_Name
       value: EnemyLevel1Troop

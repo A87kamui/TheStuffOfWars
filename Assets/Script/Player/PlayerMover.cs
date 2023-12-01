@@ -88,8 +88,10 @@ public class PlayerMover : MonoBehaviour
     {
 
         if (collision.gameObject.tag != "Obstacle")
+        {
             return;
-
+        }
+            
         // Calculate vector from player to obstacle
         Vector3 toObstacle = collision.gameObject.transform.position - transform.position;
         toObstacle.Normalize();

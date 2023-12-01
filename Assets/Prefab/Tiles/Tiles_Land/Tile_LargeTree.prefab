@@ -12,9 +12,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile_LargeTree
       objectReference: {fileID: 0}
+    - target: {fileID: 643503735862994246, guid: c766cd609001e4c3a8fd9647c980b954, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3177010015003074795, guid: c766cd609001e4c3a8fd9647c980b954, type: 3}
       propertyPath: isWalkable
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781882294411916897, guid: c766cd609001e4c3a8fd9647c980b954, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4446991653818329853, guid: c766cd609001e4c3a8fd9647c980b954, type: 3}
       propertyPath: m_LocalPosition.x
@@ -56,6 +64,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5150904148780975133, guid: c766cd609001e4c3a8fd9647c980b954, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7958060898917117929, guid: c766cd609001e4c3a8fd9647c980b954, type: 3}
       propertyPath: m_text
       value: 17, -4
@@ -81,9 +93,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2196820977569082106}
     m_Modifications:
+    - target: {fileID: 330185957759019353, guid: 214386ae00db9465eabec5028e921c78, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3464300729838707323, guid: 214386ae00db9465eabec5028e921c78, type: 3}
       propertyPath: m_Name
       value: Tree_Large
+      objectReference: {fileID: 0}
+    - target: {fileID: 3464300729838707323, guid: 214386ae00db9465eabec5028e921c78, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8099806648763026375, guid: 214386ae00db9465eabec5028e921c78, type: 3}
       propertyPath: m_LocalPosition.x
@@ -124,6 +144,10 @@ PrefabInstance:
     - target: {fileID: 8099806648763026375, guid: 214386ae00db9465eabec5028e921c78, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725941437414183296, guid: 214386ae00db9465eabec5028e921c78, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

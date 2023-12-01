@@ -7,7 +7,7 @@ public class EnemyMover : MonoBehaviour
 {
     [SerializeField][Range(0.0f, 5.0f)] public float speed = 1.0f;
 
-    List<Node> path = new List<Node>();
+    public List<Node> path = new List<Node>();
     GridManager gridManager;
     PathFinder pathFinder;
     [SerializeField] Animator animator;
@@ -16,8 +16,8 @@ public class EnemyMover : MonoBehaviour
 
     float radiusOfSatisfaction = 1.5f;
     bool reachedRadiusOfSatisfaction = false;
-    public Transform playerTower; 
-    
+    public Transform playerTower;
+    public bool isMoving = false;
 
     /// <summary>
     /// When object is enabled call methods to run the object
@@ -65,19 +65,12 @@ public class EnemyMover : MonoBehaviour
     }
 
     /// <summary>
-    /// Return object back to start of path
-    /// </summary>
-    void ReturnToStart()
-    {
-        transform.position = gridManager.GetPositionFromCoordinates(pathFinder.StartCoordinates);
-    }
-
-    /// <summary>
     /// Move character following the given waypoint with a wait time of 1 seconds
     /// for each move to the next waypoint
     /// </summary>
     IEnumerator FollowPath()
     {
+        isMoving = true;
         animator.SetBool("isWalking", true);
         //yield return new WaitForSeconds(1.0f); = Wait for 1 second then continue
         for (int i = 1; i < path.Count-1; i++)
@@ -113,7 +106,7 @@ public class EnemyMover : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
 
-        if (collision.gameObject.tag != "Obstacle")
+        if (collision.gameObject.tag != "Obstacle" || collision.gameObject.tag != "Enemy" || collision.gameObject.tag != "Selectable")
             return;
 
         // Calculate vector from player to obstacle
@@ -155,8 +148,7 @@ public class EnemyMover : MonoBehaviour
     private void FinishPath()
     {
         //animator.SetBool("isWalking", false);
-        // Deactivate game object after reaching the end of the path
-        //gameObject.SetActive(false);
+        isMoving = false;
     }
 
     public void StopCoroutines()

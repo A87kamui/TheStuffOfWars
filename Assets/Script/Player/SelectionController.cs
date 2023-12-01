@@ -38,20 +38,40 @@ public class SelectionController : MonoBehaviour
             {
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                bool didHit = Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("TileLayer"));
+                //Ignore trees or any other obstcale. Hit the plane, troops or towers
+                int layerMask = 1 << 9;
+                layerMask = ~layerMask;
+                bool didHit = Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask);
+                //print("hit: " + hit.transform.name);
+                //hit.transform.gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
 
-                Vector2Int temp = GridManager.instance.GetCoordinatesFromPosition(hit.transform.position);
-                if (GridManager.instance.GetNode(temp).isWalkable)
+                if(hit.transform.gameObject.tag == "Enemy")
                 {
-                    //Set Destination
-                    foreach (GameObject gameObject in selectedList)
+                    foreach(GameObject gameobject in selectedList)
                     {
-                        if (didHit)
+                        PlayerFight playerTroop = gameobject.GetComponent<PlayerFight>();
+                        playerTroop.enemyMover = hit.rigidbody.gameObject.GetComponent<EnemyMover>();
+                        playerTroop.target = hit.rigidbody.gameObject;
+                    }
+                }
+                else
+                {
+                    Vector2Int temp = GridManager.instance.GetCoordinatesFromPosition(hit.point);
+
+                    if (GridManager.instance.GetNode(temp).isWalkable)
+                    {
+                        //Set Destination
+                        foreach (GameObject gameObject in selectedList)
                         {
-                            gameObject.GetComponent<PathFinder>().GetNewPath(hit.transform.position);
+                            if (didHit)
+                            {
+                                gameObject.GetComponent<PathFinder>().GetNewPath(hit.point);
+                                
+                            }
                         }
                     }
                 }
+                
             }
         }
         //Expands the selection window towards the mouse

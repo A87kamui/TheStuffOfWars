@@ -14,7 +14,7 @@ public class EnemyFight : MonoBehaviour
     [SerializeField][Range(0.0f, 10.0f)] public float speed = 1.0f;
     [SerializeField] float obstacleBumpSpeed;
 
-    float radiusOfSatisfaction = 3.0f;
+    float radiusOfSatisfaction = 5.0f;
     bool found = false;
 
     // Start is called before the first frame update
