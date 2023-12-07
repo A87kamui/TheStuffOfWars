@@ -16,7 +16,7 @@ public class PlayerFight : MonoBehaviour
     [SerializeField] float obstacleBumpSpeed;
 
     bool enemyNear = false;
-    float radiusOfSatisfaction = 5.0f;
+    float radiusOfSatisfaction = 7.5f;
 
     // Start is called before the first frame update
     void Start()
