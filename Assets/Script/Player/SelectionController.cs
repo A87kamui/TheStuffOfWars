@@ -42,9 +42,7 @@ public class SelectionController : MonoBehaviour
                 int layerMask = 1 << 9;
                 layerMask = ~layerMask;
                 bool didHit = Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask);
-                //print("hit: " + hit.transform.name);
-                //hit.transform.gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
-
+                
                 if(hit.transform.gameObject.tag == "Enemy")
                 {
                     foreach(GameObject gameobject in selectedList)
@@ -58,7 +56,8 @@ public class SelectionController : MonoBehaviour
                 {
                     Vector2Int temp = GridManager.instance.GetCoordinatesFromPosition(hit.point);
 
-                    if (GridManager.instance.GetNode(temp).isWalkable)
+                    Node selectedNode = GridManager.instance.GetNode(temp);
+                    if (selectedNode != null && GridManager.instance.GetNode(temp).isWalkable)
                     {
                         //Set Destination
                         foreach (GameObject gameObject in selectedList)

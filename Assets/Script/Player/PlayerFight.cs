@@ -9,7 +9,8 @@ public class PlayerFight : MonoBehaviour
     public GameObject target;
 
     //Player variables
-    public PathFinder pathFinder; 
+    public PathFinder pathFinder;
+    public AttackController attackController;
     [SerializeField] Vector3 towardsTarget;
     [SerializeField] float turnSpeed = 1.0f;
     [SerializeField][Range(0.0f, 10.0f)] public float speed = 1.0f;
@@ -21,7 +22,7 @@ public class PlayerFight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        attackController = GetComponent<AttackController>();
     }
 
     // Update is called once per frame
@@ -36,6 +37,7 @@ public class PlayerFight : MonoBehaviour
             {
                 //print("Kine");
                 RunKinematicArrive();
+                attackController.target = target;
             }
             else
             {
@@ -74,6 +76,10 @@ public class PlayerFight : MonoBehaviour
         transform.position = newPosition;
     }
 
+    /// <summary>
+    /// Sets enemyNear so that troop can run kinematic arrive
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerStay(Collider other)
     {
         if(other.gameObject == target)
@@ -82,6 +88,10 @@ public class PlayerFight : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sets enemyNear so that troop can run A*
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerExit(Collider other)
     {
         if(other.gameObject == target)
