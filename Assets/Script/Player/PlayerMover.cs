@@ -49,7 +49,6 @@ public class PlayerMover : MonoBehaviour
             Vector3 startPosition = transform.position; // Store starting position
             Vector3 endPosition = gridManager.GetPositionFromCoordinates(path[i].coordinates);  // Store ending position
             float travelPercent = 0.0f; // Value to represent the travel percent in Vector3.LERP
-            //endPosition += new Vector3(0.0f, 2.5f, 0.0f);   // Make object stay above ground
             // Always face the endPosition
             transform.LookAt(endPosition);
 

@@ -11,13 +11,14 @@ public class PlayerFight : MonoBehaviour
     //Player variables
     public PathFinder pathFinder;
     public AttackController attackController;
+    public Animator animator;
     [SerializeField] Vector3 towardsTarget;
     [SerializeField] float turnSpeed = 1.0f;
     [SerializeField][Range(0.0f, 10.0f)] public float speed = 1.0f;
     [SerializeField] float obstacleBumpSpeed;
 
-    bool enemyNear = false;
-    float radiusOfSatisfaction = 7.5f;
+    public bool enemyNear = false;
+    float radiusOfSatisfaction = 4f;
 
     // Start is called before the first frame update
     void Start()
@@ -35,17 +36,18 @@ public class PlayerFight : MonoBehaviour
             bool didHit = Physics.Raycast(transform.position, ray, out hit);
             if(enemyNear || (didHit && hit.transform.gameObject == target.transform.gameObject))
             {
-                //print("Kine");
+                animator.SetBool("isWalking", true);
+                StopAllCoroutines();
                 RunKinematicArrive();
-                attackController.target = target;
+                print("See Target");
             }
             else
             {
-                //print("A*");
+
                 List<Node> path = pathFinder.ReturnNewPath(target.transform.position);
                 pathFinder.GetNewPath(GridManager.instance.GetPositionFromCoordinates(path[(path.Count / 2) + 1].coordinates));
             }
-        }   
+        }
     }
 
     /// <summary>
@@ -55,10 +57,14 @@ public class PlayerFight : MonoBehaviour
     {
         towardsTarget = target.transform.position - transform.position;
 
-        // Check to see if the character is close enough to the target
         if (towardsTarget.magnitude <= radiusOfSatisfaction)
         {
             // Close enough to stop
+            towardsTarget.Normalize();
+
+            Quaternion targertRot = Quaternion.LookRotation(towardsTarget);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targertRot, turnSpeed);
+            animator.SetTrigger("isAttacking");
             return;
         }
 

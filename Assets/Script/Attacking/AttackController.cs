@@ -1,15 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class AttackController : MonoBehaviour
 {
     float timer = 0f;
-    public Animator animator;
     public GameObject target;
-    public bool isAttacking = false;
-
 
     // Start is called before the first frame update
     void Start()
@@ -21,19 +19,34 @@ public class AttackController : MonoBehaviour
     void Update()
     {
         timer -= Time.deltaTime;
-        if (isAttacking && target != null)
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject == target)
         {
-            transform.LookAt(target.transform.position);
+            if(target.CompareTag("Tower"))
+            {
+                other.gameObject.GetComponentInChildren<Slider>().value -= 15;
+            }
+            else
+            {
+                other.gameObject.GetComponentInChildren<Slider>().value -= 1;
+            }
+            timer = 3;
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        isAttacking = true;
+        
+    }
+
+    /**Will remove this code once we switch the triggering of the animation somewhere else
+    private void OnTriggerStay(Collider other)
+    {
         if (other.gameObject.name == "Player Tower_Standing" && timer < 0 && this.tag == "Enemy")
         {          
-            other.gameObject.GetComponentInChildren<Slider>().value -= 15;
-            timer = 3;
             animator.SetTrigger("isAttacking");
             animator.SetBool("isWalking", false);
         }
@@ -46,7 +59,7 @@ public class AttackController : MonoBehaviour
         }
         if (other.gameObject.tag == "Enemy" && timer < 0 && this.tag == "Selectable")
         {
-            other.gameObject.GetComponentInChildren<Slider>().value -= 1;
+            
             timer = 3;
             animator.SetTrigger("isAttacking");
             animator.SetBool("isWalking", false);
@@ -59,9 +72,5 @@ public class AttackController : MonoBehaviour
             animator.SetBool("isWalking", false);
         }
     }
-
-    private void OnTriggerExit(Collider other)
-    {
-        target = null;
-    }
+    */
 }
