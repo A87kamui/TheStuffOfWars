@@ -6,6 +6,8 @@ public class CameraMovement : MonoBehaviour
 {
     [SerializeField] float camSpeed = 60.0f;
     [SerializeField] float boundary = 100.0f;
+    [SerializeField] float xLowerBoundary = 70.0f;
+    [SerializeField] float yLowerBoundary = 60.0f;
     [SerializeField] Vector2Int camLimit;
 
     // Update is called once per frame
@@ -30,8 +32,8 @@ public class CameraMovement : MonoBehaviour
             position.z -= camSpeed * Time.deltaTime;
         }
 
-        position.x = Mathf.Clamp(position.x, 70, camLimit.x);
-        position.z = Mathf.Clamp(position.z, 60, camLimit.y);
+        position.x = Mathf.Clamp(position.x, xLowerBoundary, camLimit.x);
+        position.z = Mathf.Clamp(position.z, yLowerBoundary, camLimit.y);
 
         transform.position = position;
     }
