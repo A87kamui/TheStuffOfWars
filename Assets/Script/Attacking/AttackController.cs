@@ -21,11 +21,10 @@ public class AttackController : MonoBehaviour
     void Update()
     {
         timer -= Time.deltaTime;
-        if (isAttacking)
+        if (isAttacking && target != null)
         {
             transform.LookAt(target.transform.position);
         }
-
     }
 
     private void OnTriggerStay(Collider other)

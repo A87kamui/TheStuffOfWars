@@ -10,6 +10,7 @@ public class EnemyFight : MonoBehaviour
 
     [SerializeField] Vector3 towardsTarget;
     [SerializeField] Transform parentTransform;
+    public AttackController attackController;
     [SerializeField] float turnSpeed = 1.0f;
     [SerializeField][Range(0.0f, 10.0f)] public float speed = 1.0f;
     [SerializeField] float obstacleBumpSpeed;
@@ -20,7 +21,7 @@ public class EnemyFight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        attackController = GetComponent<AttackController>();
     }
 
     // Update is called once per frame
@@ -41,6 +42,7 @@ public class EnemyFight : MonoBehaviour
         if ((other.gameObject.tag == "Selectable" || other.gameObject.tag == "PlayerTower") && !found)
         {
             target = other.gameObject.transform;
+            attackController.target = target.transform.gameObject;
             enemyMover.StopCoroutines();    // This stops A* movement
             found = true;
         }
