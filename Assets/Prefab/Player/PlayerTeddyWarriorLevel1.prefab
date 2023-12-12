@@ -623,7 +623,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 11539578027fb4fda95f897b7ede4592, type: 2}
+  - {fileID: 2100000, guid: b7cc305d7bb184b498d34e2ed68b5dc3, type: 2}
   - {fileID: 6098924145076851180, guid: cc9a2bf4f0a6c457483e5eec984a0c5c, type: 3}
   - {fileID: 8627644809163848826, guid: cc9a2bf4f0a6c457483e5eec984a0c5c, type: 3}
   m_StaticBatchInfo:
@@ -844,7 +844,7 @@ GameObject:
   - component: {fileID: 5579822791313148105}
   - component: {fileID: 7089634726369575428}
   m_Layer: 0
-  m_Name: PlayerTeddyWarriorBase
+  m_Name: PlayerTeddyWarriorLevel1
   m_TagString: Selectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -911,8 +911,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0

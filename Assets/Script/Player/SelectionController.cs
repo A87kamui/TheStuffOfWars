@@ -50,12 +50,12 @@ public class SelectionController : MonoBehaviour
                         PlayerFight playerTroop = gameobject.GetComponent<PlayerFight>();
                         playerTroop.enemyMover = hit.rigidbody.gameObject.GetComponent<EnemyMover>();
                         playerTroop.target = hit.rigidbody.gameObject;
+                        playerTroop.gameObject.GetComponentInChildren<AttackController>().target = hit.rigidbody.gameObject;
                     }
                 }
                 else
                 {
                     Vector2Int temp = GridManager.instance.GetCoordinatesFromPosition(hit.point);
-
                     Node selectedNode = GridManager.instance.GetNode(temp);
                     if (selectedNode != null && GridManager.instance.GetNode(temp).isWalkable)
                     {
@@ -64,6 +64,8 @@ public class SelectionController : MonoBehaviour
                         {
                             if (didHit)
                             {
+                                PlayerFight playerTroop = gameObject.GetComponent<PlayerFight>();
+                                playerTroop.target = null;
                                 gameObject.GetComponent<PathFinder>().GetNewPath(hit.point);
                                 
                             }
