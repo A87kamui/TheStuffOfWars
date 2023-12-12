@@ -876,8 +876,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
+  m_UseGravity: 1
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
@@ -924,6 +924,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1115081996322691979}
+  target: {fileID: 0}
+  isAttacking: 0
 --- !u!114 &1172712971491198099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -939,6 +941,7 @@ MonoBehaviour:
   enemyMover: {fileID: 0}
   target: {fileID: 0}
   pathFinder: {fileID: 2709080496604972246}
+  attackController: {fileID: 0}
   towardsTarget: {x: 0, y: 0, z: 0}
   turnSpeed: 1
   speed: 1
