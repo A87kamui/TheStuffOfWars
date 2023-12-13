@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBasesController : MonoBehaviour
 {
-    GameObject[] pool;
+    public GameObject[] pool;
     [SerializeField] GameObject troopPrefab;
     [SerializeField][Range(0, 50)] int poolSize = 7;
     [SerializeField] GameObject[] spawner;

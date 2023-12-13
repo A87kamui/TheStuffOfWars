@@ -683,6 +683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  damageValue: 1
 --- !u!1 &4621381745285464115
 GameObject:
   m_ObjectHideFlags: 0

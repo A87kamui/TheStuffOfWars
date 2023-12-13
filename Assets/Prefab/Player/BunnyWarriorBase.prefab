@@ -700,6 +700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  damageValue: 3
 --- !u!1 &5681090640410159973
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,10 +744,10 @@ GameObject:
   - component: {fileID: 759524145128356106}
   - component: {fileID: 1029174510177822341}
   - component: {fileID: 2741665687556914895}
+  - component: {fileID: 6363987338675091536}
   - component: {fileID: 855723112322853105}
   - component: {fileID: 6977124136417526105}
   - component: {fileID: 2302974880401323012}
-  - component: {fileID: 6363987338675091536}
   - component: {fileID: 3763744545961094709}
   m_Layer: 0
   m_Name: BunnyWarriorBase
@@ -821,6 +822,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!135 &6363987338675091536
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6605479552919359092}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 10
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &855723112322853105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -866,34 +888,13 @@ MonoBehaviour:
   enemyMover: {fileID: 0}
   target: {fileID: 0}
   pathFinder: {fileID: 855723112322853105}
-  attackController: {fileID: 197977558076375877}
+  playerMover: {fileID: 0}
   animator: {fileID: 1029174510177822341}
   towardsTarget: {x: 0, y: 0, z: 0}
   turnSpeed: 1
   speed: 5
   obstacleBumpSpeed: 0
-  enemyNear: 0
---- !u!135 &6363987338675091536
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6605479552919359092}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 10
-  m_Center: {x: 0, y: 0, z: 0}
+  ranOnce: 0
 --- !u!136 &3763744545961094709
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1058,7 +1059,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 546421761639475474, guid: 10bacd935cc9c449daa5982b48cff033, type: 3}
       propertyPath: m_Value
-      value: 3
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 546421761639475474, guid: 10bacd935cc9c449daa5982b48cff033, type: 3}
+      propertyPath: m_MaxValue
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 546421761639475474, guid: 10bacd935cc9c449daa5982b48cff033, type: 3}
       propertyPath: m_Direction

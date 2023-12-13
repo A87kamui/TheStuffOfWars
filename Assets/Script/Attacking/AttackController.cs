@@ -8,6 +8,7 @@ public class AttackController : MonoBehaviour
 {
     float timer = 0f;
     public GameObject target;
+    [SerializeField] int damageValue;
 
     // Start is called before the first frame update
     void Start()
@@ -25,14 +26,15 @@ public class AttackController : MonoBehaviour
     {
         if (collision.gameObject == target)
         {
-            if (target.CompareTag("Tower"))
+            collision.gameObject.GetComponentInChildren<Slider>().value -= damageValue;
+            /*if (target.CompareTag("Tower"))
             {
                 collision.gameObject.GetComponentInChildren<Slider>().value -= 15;
             }
             else
             {
                 collision.gameObject.GetComponentInChildren<Slider>().value -= 1;
-            }
+            }//*/
             timer = 3;
         }
     }//*/
