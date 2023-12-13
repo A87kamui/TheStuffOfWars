@@ -526,6 +526,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VideoPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 7182703889233116184, guid: 10d283a63fc5f42ea98f1f9879080817, type: 3}
+      propertyPath: m_VideoClip
+      value: 
+      objectReference: {fileID: 32900000, guid: dc1b960f9cd044bf497392a347be0d4f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -551,6 +555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2f04fb6c05bc44a6b5a5059ce5585d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wait_time: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
