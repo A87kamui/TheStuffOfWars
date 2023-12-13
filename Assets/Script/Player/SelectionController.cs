@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SelectionController : MonoBehaviour
@@ -45,12 +46,15 @@ public class SelectionController : MonoBehaviour
                 
                 if(hit.transform.gameObject.tag == "Enemy")
                 {
-                    foreach(GameObject gameobject in selectedList)
+                    foreach(GameObject gb in selectedList)
                     {
-                        PlayerFight playerTroop = gameobject.GetComponent<PlayerFight>();
-                        playerTroop.enemyMover = hit.rigidbody.gameObject.GetComponent<EnemyMover>();
-                        playerTroop.target = hit.rigidbody.gameObject;
-                        playerTroop.gameObject.GetComponentInChildren<AttackController>().target = hit.rigidbody.gameObject;
+                        AttackController attack = gb.GetComponentInChildren<AttackController>();
+                        attack.target = hit.transform.gameObject;
+                        PlayerFight fight = gb.GetComponent<PlayerFight>();
+                        fight.enemyMover = hit.rigidbody.gameObject.GetComponent<EnemyMover>();
+                        fight.target = hit.rigidbody.gameObject;
+
+
                     }
                 }
                 else
@@ -60,13 +64,13 @@ public class SelectionController : MonoBehaviour
                     if (selectedNode != null && GridManager.instance.GetNode(temp).isWalkable)
                     {
                         //Set Destination
-                        foreach (GameObject gameObject in selectedList)
+                        foreach (GameObject gb in selectedList)
                         {
                             if (didHit)
                             {
-                                PlayerFight playerTroop = gameObject.GetComponent<PlayerFight>();
-                                playerTroop.target = null;
-                                gameObject.GetComponent<PathFinder>().GetNewPath(hit.point);
+                                AttackController attack = gb.GetComponentInChildren<AttackController>();
+                                attack.target = null;
+                                gb.GetComponentInParent<PathFinder>().GetNewPath(hit.point);
                                 
                             }
                         }

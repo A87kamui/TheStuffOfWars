@@ -20,26 +20,21 @@ public class AttackController : MonoBehaviour
     {
         timer -= Time.deltaTime;
     }
-
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.gameObject == target)
+        if (collision.gameObject == target)
         {
-            if(target.CompareTag("Tower"))
+            if (target.CompareTag("Tower"))
             {
-                other.gameObject.GetComponentInChildren<Slider>().value -= 15;
+                collision.gameObject.GetComponentInChildren<Slider>().value -= 15;
             }
             else
             {
-                other.gameObject.GetComponentInChildren<Slider>().value -= 1;
+                collision.gameObject.GetComponentInChildren<Slider>().value -= 1;
             }
             timer = 3;
         }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        
+        print("Collision");
     }
 
     /**Will remove this code once we switch the triggering of the animation somewhere else

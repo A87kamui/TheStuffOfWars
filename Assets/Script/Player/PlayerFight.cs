@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Search;
 using UnityEngine;
 
 public class PlayerFight : MonoBehaviour
@@ -10,20 +11,20 @@ public class PlayerFight : MonoBehaviour
 
     //Player variables
     public PathFinder pathFinder;
-    public AttackController attackController;
+    public PlayerMover playerMover;
     public Animator animator;
     [SerializeField] Vector3 towardsTarget;
     [SerializeField] float turnSpeed = 1.0f;
     [SerializeField][Range(0.0f, 10.0f)] public float speed = 1.0f;
     [SerializeField] float obstacleBumpSpeed;
 
-    public bool enemyNear = false;
     float radiusOfSatisfaction = 4f;
+    public bool ranOnce = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        attackController = GetComponent<AttackController>();
+    
     }
 
     // Update is called once per frame
@@ -33,19 +34,24 @@ public class PlayerFight : MonoBehaviour
         {
             RaycastHit hit;
             Vector3 ray = target.transform.position - transform.position;
-            bool didHit = Physics.Raycast(transform.position, ray, out hit);
-            if(enemyNear || (didHit && hit.transform.gameObject == target.transform.gameObject))
+            bool didHit = Physics.Raycast(transform.position + new Vector3(0, 2.5f, 0), ray, out hit);
+            Debug.DrawRay(transform.position + new Vector3(0, 2.5f, 0), ray, Color.white);
+            if(hit.transform.gameObject == target.transform.gameObject || ray.magnitude < 30)
             {
+                ranOnce = false;
                 animator.SetBool("isWalking", true);
-                StopAllCoroutines();
+                playerMover.StopAllCoroutines();
                 RunKinematicArrive();
-                print("See Target");
             }
             else
             {
-
-                List<Node> path = pathFinder.ReturnNewPath(target.transform.position);
-                pathFinder.GetNewPath(GridManager.instance.GetPositionFromCoordinates(path[(path.Count / 2) + 1].coordinates));
+                if(!ranOnce)
+                {
+                    ranOnce = true;
+                    List<Node> path = pathFinder.ReturnNewPath(target.transform.position);
+                    pathFinder.GetNewPath(GridManager.instance.GetPositionFromCoordinates(path[(path.Count / 2) + 1].coordinates));
+                }
+                
             }
         }
     }
@@ -78,31 +84,6 @@ public class PlayerFight : MonoBehaviour
         // Move along our forward vector (the direction we're facing)
         Vector3 newPosition = transform.position;
         newPosition += transform.forward * speed * Time.deltaTime;
-
         transform.position = newPosition;
-    }
-
-    /// <summary>
-    /// Sets enemyNear so that troop can run kinematic arrive
-    /// </summary>
-    /// <param name="other"></param>
-    private void OnTriggerStay(Collider other)
-    {
-        if(other.gameObject == target)
-        {
-            enemyNear = true;
-        }
-    }
-
-    /// <summary>
-    /// Sets enemyNear so that troop can run A*
-    /// </summary>
-    /// <param name="other"></param>
-    private void OnTriggerExit(Collider other)
-    {
-        if(other.gameObject == target)
-        {
-            enemyNear = false;
-        }    
     }
 }
