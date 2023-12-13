@@ -22412,7 +22412,7 @@ MonoBehaviour:
   boundary: 100
   xLowerBoundary: 50
   yLowerBoundary: 50
-  camLimit: {x: 180, y: 235}
+  camLimit: {x: 170, y: 235}
 --- !u!4 &964389498 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5250960581149411135, guid: e7a587427bf4d46d693f857a7a49aa12, type: 3}
