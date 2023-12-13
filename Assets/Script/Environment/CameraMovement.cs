@@ -6,8 +6,8 @@ public class CameraMovement : MonoBehaviour
 {
     [SerializeField] float camSpeed = 60.0f;
     [SerializeField] float boundary = 100.0f;
-    [SerializeField] float xLowerBoundary = 70.0f;
-    [SerializeField] float yLowerBoundary = 60.0f;
+    [SerializeField] float xLowerBoundary = 50.0f;
+    [SerializeField] float yLowerBoundary = 50.0f;
     [SerializeField] Vector2Int camLimit;
 
     // Update is called once per frame
@@ -15,19 +15,19 @@ public class CameraMovement : MonoBehaviour
     {
         Vector3 position = transform.position;
 
-        if (Input.mousePosition.y >= Screen.height - boundary)
+        if (Input.GetKey("w"))// || Input.mousePosition.y >= Screen.height - boundary); // Input.mousePosition.y >= Screen.height - boundary)
         {
             position.x -= camSpeed * Time.deltaTime;
         }
-        if (Input.mousePosition.y <= boundary)
+        if (Input.GetKey("s"))// || Input.mousePosition.y <= boundary)
         {
             position.x += camSpeed * Time.deltaTime;
         }
-        if (Input.mousePosition.x >= Screen.width - boundary)
+        if (Input.GetKey("d"))// || Input.mousePosition.x >= Screen.width - boundary)
         {
             position.z += camSpeed * Time.deltaTime;
         }
-        if (Input.mousePosition.x <= boundary)
+        if (Input.GetKey("a"))// || Input.mousePosition.x <= boundary)
         {
             position.z -= camSpeed * Time.deltaTime;
         }
