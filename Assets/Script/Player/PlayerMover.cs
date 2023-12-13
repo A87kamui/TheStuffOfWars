@@ -96,8 +96,6 @@ public class PlayerMover : MonoBehaviour
         toObstacle.Normalize();
         toObstacle.y = 0f;
 
-        //Debug.DrawRay(trans.position + Vector3.up, toObstacle, Color.yellow);
-        //Debug.DrawRay(trans.position + Vector3.up, trans.right, Color.cyan);
 
         float dot = Vector3.Dot(transform.right, toObstacle);
         //print(dot);

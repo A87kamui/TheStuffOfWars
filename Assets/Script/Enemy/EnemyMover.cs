@@ -10,11 +10,12 @@ public class EnemyMover : MonoBehaviour
     public List<Node> path = new List<Node>();
     GridManager gridManager;
     PathFinder pathFinder;
+    [SerializeField] EnemyFight enemyFight;
     [SerializeField] Animator animator;
     [SerializeField] Vector3 towardsTarget;
     [SerializeField] float obstacleBumpSpeed = 1.0f;
 
-    float radiusOfSatisfaction = 1.5f;
+    float radiusOfSatisfaction = 7.0f;
     bool reachedRadiusOfSatisfaction = false;
     public Transform playerTower;
     public bool isMoving = false;
@@ -86,6 +87,7 @@ public class EnemyMover : MonoBehaviour
             // and position until it reaches endPosition
             while (travelPercent < 1.0f && !reachedRadiusOfSatisfaction)
             {
+                //print("Travel Percent: " + travelPercent);
                 // Each frame, add Time.deltaTime
                 travelPercent += Time.deltaTime * speed;
                 // Update current position
@@ -133,6 +135,7 @@ public class EnemyMover : MonoBehaviour
 
     private bool CheckRadiusOfSatisfaction()
     {
+        
         towardsTarget = playerTower.position - transform.position;
 
         if (towardsTarget.magnitude <= radiusOfSatisfaction)
@@ -147,8 +150,10 @@ public class EnemyMover : MonoBehaviour
     /// </summary>
     private void FinishPath()
     {
+        print("Finished path");
         //animator.SetBool("isWalking", false);
         isMoving = false;
+        enemyFight.target = playerTower.gameObject;
     }
 
     public void StopCoroutines()

@@ -14,9 +14,8 @@ public class EnemyFight : MonoBehaviour
     [SerializeField][Range(0.0f, 10.0f)] public float speed = 1.0f;
     [SerializeField] float obstacleBumpSpeed;
 
-    float radiusOfSatisfaction = 4f;
-    bool found = false;
-
+    float radiusOfSatisfaction = 4.0f;
+    bool astar = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,9 +25,26 @@ public class EnemyFight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (found)
+        if (target != null)
         {
+            
+            attackController.target = target;
+            enemyMover.StopCoroutines();
             RunKinematicArrive();
+            if((target.transform.position - transform.position).magnitude > 30)
+            {
+                target = null;
+            }
+            astar = false;
+        }
+        else
+        {
+            if(!astar)
+            {
+                attackController.target = null;
+                enemyMover.RecalcuatePath(true);
+                astar = true;
+            }
         }
     }
     /// <summary>
@@ -38,9 +54,19 @@ public class EnemyFight : MonoBehaviour
     {
         towardsTarget = target.transform.position - transform.position;
 
+        if (target.tag == "Tower")
+        {
+            radiusOfSatisfaction = 7.0f;
+        }
+        else
+        {
+            radiusOfSatisfaction = 4.0f;
+        }
+
         // Check to see if the character is close enough to the target
         if (towardsTarget.magnitude <= radiusOfSatisfaction)
         {
+            //Debug.Log("Close enough");
             // Close enough to stop
             towardsTarget.Normalize();
 
@@ -62,39 +88,5 @@ public class EnemyFight : MonoBehaviour
         newPosition += transform.forward * speed * Time.deltaTime;
 
         transform.position = newPosition;
-    }
-
-    /// <summary>
-    /// Detect player inside collision 
-    /// </summary>
-    /// <param name="collision"></param>
-    private void OnTriggerEnter(Collider other)
-    {
-        if ((other.gameObject.tag == "Selectable" || other.gameObject.tag == "PlayerTower") && !found)
-        {
-            target = other.gameObject;
-            attackController.target = target;
-            enemyMover.StopCoroutines();    // This stops A* movement
-            found = true;
-        }
-    }
-
-    /// <summary>
-    /// Compare object that exit to what we are pursuing
-    /// If object exits, go towards player base
-    /// </summary>
-    /// <param name="other"></param>
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Selectable" && found)
-        {
-            if (other.gameObject == target.gameObject)
-            {
-                found = false;
-                target = null;
-                attackController.target = null;
-                enemyMover.RecalcuatePath(true);
-            }   
-        }
     }
 }

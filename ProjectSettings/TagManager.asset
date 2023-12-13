@@ -22,7 +22,7 @@ TagManager:
   - TileLayer
   - TowerLayer
   - TreeLayer
-  - 
+  - SphereColliders
   - 
   - 
   - 
