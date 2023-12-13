@@ -10,11 +10,6 @@ public class SelectionController : MonoBehaviour
     private Vector3 anchor;
     [SerializeField] bool isSelected = false;
 
-    private void Awake()
-    {
-        
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +39,7 @@ public class SelectionController : MonoBehaviour
                 layerMask = ~layerMask;
                 bool didHit = Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask);
                 
-                if(hit.transform.gameObject.tag == "Enemy" || hit.transform.gameObject.tag == "Tower")
+                if(hit.transform.gameObject.tag == "Enemy" || hit.transform.gameObject.name == "Enemy Tower_Standing")
                 {
                     foreach(GameObject gb in selectedList)
                     {
@@ -57,19 +52,26 @@ public class SelectionController : MonoBehaviour
                 }
                 else
                 {
-                    Vector2Int temp = GridManager.instance.GetCoordinatesFromPosition(hit.point);
-                    Node selectedNode = GridManager.instance.GetNode(temp);
-                    if (selectedNode != null && GridManager.instance.GetNode(temp).isWalkable)
+                    if(hit.transform.gameObject.name != "Player Tower_Standing")
                     {
-                        //Set Destination
-                        foreach (GameObject gb in selectedList)
+                        Vector2Int temp = GridManager.instance.GetCoordinatesFromPosition(hit.point);
+                        Node selectedNode = GridManager.instance.GetNode(temp);
+                        if (selectedNode != null && GridManager.instance.GetNode(temp).isWalkable)
                         {
-                            if (didHit)
+                            //Set Destination of Troops selected
+                            foreach (GameObject gb in selectedList)
                             {
-                                AttackController attack = gb.GetComponentInChildren<AttackController>();
-                                attack.target = null;
-                                gb.GetComponentInParent<PathFinder>().GetNewPath(hit.point);
-                                
+                                if (didHit)
+                                {
+                                    AttackController attack = gb.GetComponentInChildren<AttackController>();
+                                    attack.target = null;
+                                    if (gb.activeSelf)
+                                    {
+                                        gb.GetComponent<PathFinder>().GetNewPath(hit.point);
+                                    }
+
+
+                                }
                             }
                         }
                     }

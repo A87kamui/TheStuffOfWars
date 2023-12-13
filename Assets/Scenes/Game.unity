@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -44147,13 +44147,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3562889510812381738}
     - target: {fileID: 1801557278821536634, guid: d07a1a16ebbe34e26ae0730ff4201a91, type: 3}
+      propertyPath: poolSize
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801557278821536634, guid: d07a1a16ebbe34e26ae0730ff4201a91, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1801557278821536634, guid: d07a1a16ebbe34e26ae0730ff4201a91, type: 3}
       propertyPath: troopPrefab
       value: 
-      objectReference: {fileID: 7717443145955878273, guid: ad07ced75ba19aa4b9ed6fe687996b2e, type: 3}
+      objectReference: {fileID: 6605479552919359092, guid: e600d7bc84c359040b9dc78bab5acd2c, type: 3}
     - target: {fileID: 2641115620698321645, guid: d07a1a16ebbe34e26ae0730ff4201a91, type: 3}
       propertyPath: m_text
       value: 19, 6
@@ -44166,6 +44170,14 @@ PrefabInstance:
       propertyPath: spawner
       value: 
       objectReference: {fileID: 6965782411430995519}
+    - target: {fileID: 3200648736136627006, guid: d07a1a16ebbe34e26ae0730ff4201a91, type: 3}
+      propertyPath: poolSize
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3200648736136627006, guid: d07a1a16ebbe34e26ae0730ff4201a91, type: 3}
+      propertyPath: troopPrefab
+      value: 
+      objectReference: {fileID: 6605479552919359092, guid: 8e6aee8eaa9b2834f9c6cc71cf728f15, type: 3}
     - target: {fileID: 3200648736136627006, guid: d07a1a16ebbe34e26ae0730ff4201a91, type: 3}
       propertyPath: spawner.Array.size
       value: 2
@@ -48883,7 +48895,7 @@ PrefabInstance:
     - target: {fileID: 1801557278821536634, guid: d07a1a16ebbe34e26ae0730ff4201a91, type: 3}
       propertyPath: troopPrefab
       value: 
-      objectReference: {fileID: 7717443145955878273, guid: ad07ced75ba19aa4b9ed6fe687996b2e, type: 3}
+      objectReference: {fileID: 8842334182086115981, guid: 9d1f199d1908be14d9257d170cfc24d9, type: 3}
     - target: {fileID: 2641115620698321645, guid: d07a1a16ebbe34e26ae0730ff4201a91, type: 3}
       propertyPath: m_text
       value: 24, 12
@@ -48892,6 +48904,10 @@ PrefabInstance:
       propertyPath: spawner
       value: 
       objectReference: {fileID: 6965782411430995519}
+    - target: {fileID: 3200648736136627006, guid: d07a1a16ebbe34e26ae0730ff4201a91, type: 3}
+      propertyPath: troopPrefab
+      value: 
+      objectReference: {fileID: 7717443145955878273, guid: ad07ced75ba19aa4b9ed6fe687996b2e, type: 3}
     - target: {fileID: 3200648736136627006, guid: d07a1a16ebbe34e26ae0730ff4201a91, type: 3}
       propertyPath: spawner.Array.size
       value: 2
@@ -49231,7 +49247,7 @@ PrefabInstance:
     - target: {fileID: 1801557278821536634, guid: d07a1a16ebbe34e26ae0730ff4201a91, type: 3}
       propertyPath: troopPrefab
       value: 
-      objectReference: {fileID: 7717443145955878273, guid: ad07ced75ba19aa4b9ed6fe687996b2e, type: 3}
+      objectReference: {fileID: 6605479552919359092, guid: e761b154f4889b8488e8d5bd037c43c9, type: 3}
     - target: {fileID: 2641115620698321645, guid: d07a1a16ebbe34e26ae0730ff4201a91, type: 3}
       propertyPath: m_text
       value: 5, 9
@@ -49246,8 +49262,12 @@ PrefabInstance:
       objectReference: {fileID: 6965782411430995519}
     - target: {fileID: 3200648736136627006, guid: d07a1a16ebbe34e26ae0730ff4201a91, type: 3}
       propertyPath: poolSize
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3200648736136627006, guid: d07a1a16ebbe34e26ae0730ff4201a91, type: 3}
+      propertyPath: troopPrefab
+      value: 
+      objectReference: {fileID: 6605479552919359092, guid: 2edb768aa75a31d48815d403c1090dbf, type: 3}
     - target: {fileID: 3200648736136627006, guid: d07a1a16ebbe34e26ae0730ff4201a91, type: 3}
       propertyPath: spawner.Array.size
       value: 2
@@ -49399,6 +49419,10 @@ PrefabInstance:
     - target: {fileID: 872579472567062202, guid: e3a7b75f9430b46158d4de8c93f99650, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458274912172608983, guid: e3a7b75f9430b46158d4de8c93f99650, type: 3}
+      propertyPath: poolSize
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1458274912172608983, guid: e3a7b75f9430b46158d4de8c93f99650, type: 3}
       propertyPath: m_Enabled

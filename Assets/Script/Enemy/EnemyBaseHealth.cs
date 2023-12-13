@@ -32,6 +32,7 @@ public class EnemyBaseHealth : MonoBehaviour
     {
         if (healthSlider.value <= 0)
         {
+            healthSlider.value = healthSlider.maxValue;
             mainBase.pool[index].SetActive(false);  // Deactivate troop from base pool
             mainBase.count -= 1;
         }

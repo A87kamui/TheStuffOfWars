@@ -277,7 +277,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 11539578027fb4fda95f897b7ede4592, type: 2}
+  - {fileID: 2100000, guid: a88eb58eadabd6c4691bb794c7a42870, type: 2}
   - {fileID: 6098924145076851180, guid: cc9a2bf4f0a6c457483e5eec984a0c5c, type: 3}
   - {fileID: 8627644809163848826, guid: cc9a2bf4f0a6c457483e5eec984a0c5c, type: 3}
   m_StaticBatchInfo:
@@ -700,7 +700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  damageValue: 3
+  damageValue: 5
 --- !u!1 &5681090640410159973
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,13 +744,13 @@ GameObject:
   - component: {fileID: 759524145128356106}
   - component: {fileID: 1029174510177822341}
   - component: {fileID: 2741665687556914895}
-  - component: {fileID: 6363987338675091536}
+  - component: {fileID: 3763744545961094709}
   - component: {fileID: 855723112322853105}
   - component: {fileID: 6977124136417526105}
   - component: {fileID: 2302974880401323012}
-  - component: {fileID: 3763744545961094709}
+  - component: {fileID: -4833440929556710924}
   m_Layer: 0
-  m_Name: BunnyWarriorBase
+  m_Name: BunnyWarriorLevel3
   m_TagString: Selectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -822,8 +822,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!135 &6363987338675091536
-SphereCollider:
+--- !u!136 &3763744545961094709
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -837,12 +837,14 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 10
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Height: 6.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 3, z: 0}
 --- !u!114 &855723112322853105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -888,36 +890,29 @@ MonoBehaviour:
   enemyMover: {fileID: 0}
   target: {fileID: 0}
   pathFinder: {fileID: 855723112322853105}
-  playerMover: {fileID: 0}
+  playerMover: {fileID: 6977124136417526105}
   animator: {fileID: 1029174510177822341}
   towardsTarget: {x: 0, y: 0, z: 0}
   turnSpeed: 1
   speed: 5
   obstacleBumpSpeed: 0
   ranOnce: 0
---- !u!136 &3763744545961094709
-CapsuleCollider:
+--- !u!114 &-4833440929556710924
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6605479552919359092}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.5
-  m_Height: 6.5
-  m_Direction: 1
-  m_Center: {x: 0, y: 3, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5507b4ff4074d70afaa761a76a7812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tower: {fileID: 0}
+  healthSlider: {fileID: 1837471585914538805}
+  troop: {fileID: 6605479552919359092}
+  index: 0
 --- !u!1 &6993940475574470323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,3 +1194,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 814831377260325685, guid: 10bacd935cc9c449daa5982b48cff033, type: 3}
   m_PrefabInstance: {fileID: 2167714792735711783}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1837471585914538805 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 546421761639475474, guid: 10bacd935cc9c449daa5982b48cff033, type: 3}
+  m_PrefabInstance: {fileID: 2167714792735711783}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

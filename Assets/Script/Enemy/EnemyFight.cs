@@ -27,7 +27,6 @@ public class EnemyFight : MonoBehaviour
     {
         if (target != null)
         {
-            
             attackController.target = target;
             enemyMover.StopCoroutines();
             RunKinematicArrive();
@@ -45,6 +44,10 @@ public class EnemyFight : MonoBehaviour
                 enemyMover.RecalcuatePath(true);
                 astar = true;
             }
+        }
+        if(target != null && !target.activeSelf)
+        {
+            target = null;
         }
     }
     /// <summary>

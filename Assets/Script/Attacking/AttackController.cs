@@ -27,47 +27,31 @@ public class AttackController : MonoBehaviour
         if (collision.gameObject == target)
         {
             collision.gameObject.GetComponentInChildren<Slider>().value -= damageValue;
-            /*if (target.CompareTag("Tower"))
+            PlayerFight player = null;
+            EnemyFight enemy = null;
+            if(collision.gameObject.CompareTag("Selectable"))
             {
-                collision.gameObject.GetComponentInChildren<Slider>().value -= 15;
+                player = collision.gameObject.GetComponent<PlayerFight>();
             }
-            else
+            else if (collision.gameObject.CompareTag("Enemy"))
             {
-                collision.gameObject.GetComponentInChildren<Slider>().value -= 1;
-            }//*/
+                enemy = collision.gameObject.GetComponent<EnemyFight>();
+            }
+            if(player != null)
+            {
+                if(player.target == null || player.target.CompareTag("Tower"))
+                {
+                    player.target = this.GetComponentInParent<EnemyFight>().gameObject;
+                }
+            }
+            else if (enemy != null)
+            {
+                if (enemy.target == null || enemy.target.CompareTag("Tower"))
+                {
+                    enemy.target = this.GetComponentInParent<PlayerFight>().gameObject;
+                }
+            }
             timer = 3;
-        }
-    }//*/
-
-    /**Will remove this code once we switch the triggering of the animation somewhere else
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.name == "Player Tower_Standing" && timer < 0 && this.tag == "Enemy")
-        {          
-            animator.SetTrigger("isAttacking");
-            animator.SetBool("isWalking", false);
-        }
-        if (other.gameObject.name == "Enemy Tower_Standing" && timer < 0 && this.tag == "Selectable")
-        {
-            other.gameObject.GetComponentInChildren<Slider>().value -= 15;
-            timer = 3;
-            animator.SetTrigger("isAttacking");
-            animator.SetBool("isWalking", false);
-        }
-        if (other.gameObject.tag == "Enemy" && timer < 0 && this.tag == "Selectable")
-        {
-            
-            timer = 3;
-            animator.SetTrigger("isAttacking");
-            animator.SetBool("isWalking", false);
-        }
-        if (other.gameObject.tag == "Selectable" && timer < 0 && this.tag == "Enemy")
-        {
-            other.gameObject.GetComponentInChildren<Slider>().value -= 1;
-            timer = 3;
-            animator.SetTrigger("isAttacking");
-            animator.SetBool("isWalking", false);
         }
     }
-    */
 }

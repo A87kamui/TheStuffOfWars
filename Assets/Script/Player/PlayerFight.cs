@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Search;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerFight : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PlayerFight : MonoBehaviour
     public PathFinder pathFinder;
     public PlayerMover playerMover;
     public Animator animator;
+    public AttackController attackController;
     [SerializeField] Vector3 towardsTarget;
     [SerializeField] float turnSpeed = 1.0f;
     [SerializeField][Range(0.0f, 10.0f)] public float speed = 1.0f;
@@ -21,22 +23,21 @@ public class PlayerFight : MonoBehaviour
     float radiusOfSatisfaction = 4f;
     public bool ranOnce = false;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-    
+        attackController = GetComponentInChildren<AttackController>();
     }
-
     // Update is called once per frame
     void Update()
     {
         if(target != null)
         {
+            attackController.target = target;
             RaycastHit hit;
             Vector3 ray = target.transform.position - transform.position;
             bool didHit = Physics.Raycast(transform.position + new Vector3(0, 2.5f, 0), ray, out hit);
             Debug.DrawRay(transform.position + new Vector3(0, 2.5f, 0), ray, Color.white);
-            if(hit.transform.gameObject == target.transform.gameObject || ray.magnitude < 30)
+            if((didHit && hit.transform.gameObject == target.transform.gameObject) || ray.magnitude < 30)
             {
                 ranOnce = false;
                 animator.SetBool("isWalking", true);
@@ -48,10 +49,18 @@ public class PlayerFight : MonoBehaviour
                 if(!ranOnce)
                 {
                     ranOnce = true;
-                    List<Node> path = pathFinder.ReturnNewPath(target.transform.position);
-                    pathFinder.GetNewPath(GridManager.instance.GetPositionFromCoordinates(path[(path.Count / 2) + 1].coordinates));
+                    if(enemyMover != null && enemyMover.isMoving)
+                    {
+                        List<Node> path = pathFinder.ReturnNewPath(target.transform.position);
+                        pathFinder.GetNewPath(GridManager.instance.GetPositionFromCoordinates(path[(path.Count / 2) + 1].coordinates));
+                    }
+                    
                 }                
             }
+        }
+        if (target != null && !target.activeSelf)
+        {
+            target = null;
         }
     }
 

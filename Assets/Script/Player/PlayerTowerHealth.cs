@@ -32,6 +32,7 @@ public class PlayerTowerHealth : MonoBehaviour
         //Debug.Log("Health: " + healthSlider.value);
         if (healthSlider.value <= 0)
         {
+            healthSlider.value = healthSlider.maxValue;
             tower.pool[index].SetActive(false);
             tower.count -= 1;
         }

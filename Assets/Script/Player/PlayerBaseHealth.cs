@@ -33,6 +33,7 @@ public class PlayerBaseHealth : MonoBehaviour
         //Debug.Log("Health: " + healthSlider.value);
         if (healthSlider.value <= 0)
         {
+            healthSlider.value = healthSlider.maxValue;
             mainBase.pool[index].SetActive(false);
             mainBase.count -= 1;
         }
