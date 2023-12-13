@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class EnemyMainBaseController : MonoBehaviour
 {
-    GameObject[] pool;
+    public GameObject[] pool;
     [SerializeField] GameObject troopPrefab;
     [SerializeField][Range(0, 50)] int poolSize = 7;
     [SerializeField] GameObject[] spawner;
     [SerializeField] bool ableToSpawn = true;
-    int count = 0;
+    public int count = 0;
     int spawnerNumber;
 
     //public Slider timerSlider;
@@ -43,22 +43,13 @@ public class EnemyMainBaseController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*timerSlider.maxValue = timer;   // The number to go up to
-        timerSlider.value = 0;  // Initial value
-        timerSlider.gameObject.SetActive(false);//*/
+
     }
 
     // Update is called once per frame
     void Update()
     {
         CreateTroop();
-        /*if (timerSlider.gameObject.activeInHierarchy == true)
-        {
-            // fill the fill object on slider
-            currentTimer += Time.deltaTime;
-            timerSlider.value = currentTimer;
-            
-        }//*/
     }
 
     /// <summary>
@@ -66,7 +57,11 @@ public class EnemyMainBaseController : MonoBehaviour
     /// </summary>
     private void CreateTroop()
     {
-        StartCoroutine(SpawnTimer());
+        if (count < poolSize)
+        {
+            StartCoroutine(SpawnTimer());
+        }
+        
     }
 
     /// <summary>
@@ -95,21 +90,22 @@ public class EnemyMainBaseController : MonoBehaviour
         // Loop to active troops back from the start
         if (count >= poolSize)
         {
+            Debug.Log("Max troop");
             ableToSpawn = false;
             return;
-            // Need to fix.
-            count = 0;
-            pool[count].SetActive(false);
         }
+        else
+        {
+            //---------------------------NEED to add check for number of troops active
+            //---------------------------If number of troops active < poolSize = keep spawning new troops
+            spawnerNumber = Random.Range(0, 2);
+            pool[count].transform.position = spawner[spawnerNumber].transform.position;
 
-        //---------------------------NEED to add check for number of troops active
-        //---------------------------If number of troops active < poolSize = keep spawning new troops
-        spawnerNumber = Random.Range(0, 2);
-        pool[count].transform.position = spawner[spawnerNumber].transform.position;
+            pool[count].SetActive(true);
+            count++;
 
-        pool[count].SetActive(true);
-        count++;
-
-        ableToSpawn = true;
+            ableToSpawn = true;
+            Debug.Log("Spawn troop");
+        }   
     }
 }

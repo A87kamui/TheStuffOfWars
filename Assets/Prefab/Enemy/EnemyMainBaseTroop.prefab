@@ -871,6 +871,7 @@ GameObject:
   - component: {fileID: 1838713747844391744}
   - component: {fileID: -9189489504475343718}
   - component: {fileID: 8934875120542767943}
+  - component: {fileID: 7145213302284235585}
   m_Layer: 0
   m_Name: EnemyMainBaseTroop
   m_TagString: Enemy
@@ -1039,6 +1040,22 @@ MonoBehaviour:
   rightRoatation: 45
   target: {fileID: 0}
   enemyFight: {fileID: -9189489504475343718}
+--- !u!114 &7145213302284235585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7717443145955878273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 333565a65270c4d78bb480d45f315659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainBase: {fileID: 1458274912172608983, guid: e3a7b75f9430b46158d4de8c93f99650, type: 3}
+  healthSlider: {fileID: 6382555388941546825}
+  troop: {fileID: 7717443145955878273}
+  index: 0
 --- !u!1 &8805345072131727600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,3 +1262,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 814831377260325685, guid: 10bacd935cc9c449daa5982b48cff033, type: 3}
   m_PrefabInstance: {fileID: 6847199853618781275}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6382555388941546825 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 546421761639475474, guid: 10bacd935cc9c449daa5982b48cff033, type: 3}
+  m_PrefabInstance: {fileID: 6847199853618781275}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

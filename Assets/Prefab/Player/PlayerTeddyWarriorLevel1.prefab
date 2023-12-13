@@ -1251,6 +1251,7 @@ GameObject:
   - component: {fileID: 5085731417583421119}
   - component: {fileID: 7650551831122123545}
   - component: {fileID: 2033260467654502264}
+  - component: {fileID: 8961216559356084881}
   m_Layer: 0
   m_Name: PlayerTeddyWarriorLevel1
   m_TagString: Selectable
@@ -1399,3 +1400,19 @@ MonoBehaviour:
   speed: 1
   obstacleBumpSpeed: 1
   animator: {fileID: 8314277443197797747}
+--- !u!114 &8961216559356084881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8842334182086115981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5507b4ff4074d70afaa761a76a7812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tower: {fileID: 0}
+  healthSlider: {fileID: 1109316404039659733}
+  troop: {fileID: 8842334182086115981}
+  index: 0

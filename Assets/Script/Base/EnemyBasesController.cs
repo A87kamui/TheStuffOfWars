@@ -9,7 +9,7 @@ public class EnemyBasesController : MonoBehaviour
     [SerializeField][Range(0, 50)] int poolSize = 7;
     [SerializeField] GameObject[] spawner;
     [SerializeField] bool ableToSpawn = true;
-    int count = 0;
+    public int count = 0;
     int spawnerNumber;
 
     [SerializeField] float timer = 3f;

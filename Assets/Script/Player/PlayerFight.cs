@@ -50,8 +50,7 @@ public class PlayerFight : MonoBehaviour
                     ranOnce = true;
                     List<Node> path = pathFinder.ReturnNewPath(target.transform.position);
                     pathFinder.GetNewPath(GridManager.instance.GetPositionFromCoordinates(path[(path.Count / 2) + 1].coordinates));
-                }
-                
+                }                
             }
         }
     }

@@ -150,7 +150,6 @@ public class EnemyMover : MonoBehaviour
     /// </summary>
     private void FinishPath()
     {
-        print("Finished path");
         //animator.SetBool("isWalking", false);
         isMoving = false;
         enemyFight.target = playerTower.gameObject;

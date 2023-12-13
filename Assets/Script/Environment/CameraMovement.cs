@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     [SerializeField] float camSpeed = 60.0f;
-    [SerializeField] float boundary = 100.0f;
-    [SerializeField] float xLowerBoundary = 50.0f;
+    //[SerializeField] float boundary = 100.0f;   // Use with Mouse position
+    [SerializeField] float xLowerBoundary = 30.0f;
     [SerializeField] float yLowerBoundary = 50.0f;
     [SerializeField] Vector2Int camLimit;
 

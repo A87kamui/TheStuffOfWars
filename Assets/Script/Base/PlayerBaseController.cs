@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class PlayerBaseController : MonoBehaviour
 {
-    GameObject[] pool;
+    public GameObject[] pool;
     [SerializeField] GameObject troopPrefab;
     [SerializeField][Range(0, 50)] int poolSize = 7;
     [SerializeField] GameObject spawner;
     [SerializeField] bool ableToSpawn = true;
-    int count = 0;
+    public int count = 0;
 
     public Slider timerSlider;
     public Slider heatlhSlider;
@@ -113,14 +113,16 @@ public class PlayerBaseController : MonoBehaviour
     {
         if (count >= poolSize)
         {
-            // Need to fix.
-            count = 0;
-            pool[count].SetActive(false);
+            ableToSpawn = false;
+            return;
         }
+        else
+        {
+            pool[count].transform.position = spawner.transform.position;
+            pool[count].SetActive(true);
 
-        pool[count].transform.position = spawner.transform.position;
-
-        pool[count].SetActive(true);
-        count++;
+            count++;
+        }
+        
     }
 }

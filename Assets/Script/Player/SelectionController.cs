@@ -44,7 +44,7 @@ public class SelectionController : MonoBehaviour
                 layerMask = ~layerMask;
                 bool didHit = Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask);
                 
-                if(hit.transform.gameObject.tag == "Enemy")
+                if(hit.transform.gameObject.tag == "Enemy" || hit.transform.gameObject.tag == "Tower")
                 {
                     foreach(GameObject gb in selectedList)
                     {
@@ -53,8 +53,6 @@ public class SelectionController : MonoBehaviour
                         PlayerFight fight = gb.GetComponent<PlayerFight>();
                         fight.enemyMover = hit.rigidbody.gameObject.GetComponent<EnemyMover>();
                         fight.target = hit.rigidbody.gameObject;
-
-
                     }
                 }
                 else
@@ -75,8 +73,7 @@ public class SelectionController : MonoBehaviour
                             }
                         }
                     }
-                }
-                
+                }          
             }
         }
         //Expands the selection window towards the mouse

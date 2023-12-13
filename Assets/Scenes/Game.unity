@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2461955}
   - component: {fileID: 2461956}
+  - component: {fileID: 2461957}
   m_Layer: 0
   m_Name: WaterCollider (1)
   m_TagString: Untagged
@@ -149,7 +150,7 @@ Transform:
   m_GameObject: {fileID: 2461954}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 200}
+  m_LocalPosition: {x: 0, y: 0.5, z: 200}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -176,6 +177,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 16.237715, y: 1, z: 62.51127}
   m_Center: {x: 3.25875, y: 0, z: 10.122662}
+--- !u!54 &2461957
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461954}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &5344272
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2875,6 +2903,7 @@ GameObject:
   m_Component:
   - component: {fileID: 113096444}
   - component: {fileID: 113096445}
+  - component: {fileID: 113096446}
   m_Layer: 0
   m_Name: WaterCollider (10)
   m_TagString: Untagged
@@ -2891,7 +2920,7 @@ Transform:
   m_GameObject: {fileID: 113096443}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 160, y: 0, z: 200}
+  m_LocalPosition: {x: 160, y: 0.5, z: 200}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2918,6 +2947,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 36.426727, y: 1, z: 21.511742}
   m_Center: {x: -2.8397064, y: 0, z: 10.183292}
+--- !u!54 &113096446
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113096443}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &117345967
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3630,6 +3686,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446991653818329853, guid: c766cd609001e4c3a8fd9647c980b954, type: 3}
   m_PrefabInstance: {fileID: 1621385167}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &146434710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 146434712}
+  - component: {fileID: 146434711}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &146434711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146434710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd9915dac1d864486a29593d4bf442a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSlider: {fileID: 513641400}
+  enemySlider: {fileID: 1771485034}
+--- !u!4 &146434712
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146434710}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 102.97934, y: 25.473534, z: 133.97063}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &147028049 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4446991653818329853, guid: c766cd609001e4c3a8fd9647c980b954, type: 3}
@@ -6595,6 +6697,7 @@ GameObject:
   m_Component:
   - component: {fileID: 276991407}
   - component: {fileID: 276991408}
+  - component: {fileID: 276991409}
   m_Layer: 0
   m_Name: WaterCollider (7)
   m_TagString: Untagged
@@ -6611,7 +6714,7 @@ Transform:
   m_GameObject: {fileID: 276991406}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 50, y: 0, z: 260}
+  m_LocalPosition: {x: 50, y: 0.5, z: 260}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6638,6 +6741,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 31.195793, y: 1, z: 11.749039}
   m_Center: {x: -14.964146, y: 0, z: 15.064644}
+--- !u!54 &276991409
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276991406}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &278804660
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11867,6 +11997,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9202092989684188286, guid: 39a240f31fcde43a59b59fc221c36606, type: 3}
   m_PrefabInstance: {fileID: 1594108347}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &513641400 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8200040608165886885, guid: f2d6b5ed6092b4253bccf3c373b58ef7, type: 3}
+  m_PrefabInstance: {fileID: 3562889510812381737}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &514599856 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4446991653818329853, guid: c766cd609001e4c3a8fd9647c980b954, type: 3}
@@ -22409,8 +22550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camSpeed: 60
-  boundary: 100
-  xLowerBoundary: 50
+  xLowerBoundary: 30
   yLowerBoundary: 50
   camLimit: {x: 170, y: 235}
 --- !u!4 &964389498 stripped
@@ -22901,6 +23041,7 @@ GameObject:
   m_Component:
   - component: {fileID: 982658987}
   - component: {fileID: 982658988}
+  - component: {fileID: 982658989}
   m_Layer: 0
   m_Name: WaterCollider (2)
   m_TagString: Untagged
@@ -22917,7 +23058,7 @@ Transform:
   m_GameObject: {fileID: 982658986}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 70, y: 0, z: 50}
+  m_LocalPosition: {x: 70, y: 0.5, z: 50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22944,6 +23085,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 21.237715, y: 1, z: 21.529667}
   m_Center: {x: 0.75874996, y: 0, z: -0.36813927}
+--- !u!54 &982658989
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982658986}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!4 &987641313 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4446991653818329853, guid: c766cd609001e4c3a8fd9647c980b954, type: 3}
@@ -24502,6 +24670,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1048871646}
   - component: {fileID: 1048871647}
+  - component: {fileID: 1048871648}
   m_Layer: 0
   m_Name: WaterCollider (8)
   m_TagString: Untagged
@@ -24518,7 +24687,7 @@ Transform:
   m_GameObject: {fileID: 1048871645}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 150, y: 0, z: 10}
+  m_LocalPosition: {x: 150, y: 0.5, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24545,6 +24714,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 11.7939, y: 1, z: 11.749039}
   m_Center: {x: -15.15612, y: 0, z: 15.064644}
+--- !u!54 &1048871648
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048871645}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &1051782807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25297,6 +25493,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1085232223}
   - component: {fileID: 1085232224}
+  - component: {fileID: 1085232225}
   m_Layer: 0
   m_Name: WaterCollider (5)
   m_TagString: Untagged
@@ -25313,7 +25510,7 @@ Transform:
   m_GameObject: {fileID: 1085232222}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 80, y: 0, z: 140}
+  m_LocalPosition: {x: 80, y: 0.5, z: 140}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25340,6 +25537,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 21.167664, y: 1, z: 21.68969}
   m_Center: {x: 10.006302, y: 0, z: 10.094318}
+--- !u!54 &1085232225
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085232222}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &1086860159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34029,6 +34253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1512551677}
   - component: {fileID: 1512551678}
+  - component: {fileID: 1512551679}
   m_Layer: 0
   m_Name: WaterCollider (4)
   m_TagString: Untagged
@@ -34045,7 +34270,7 @@ Transform:
   m_GameObject: {fileID: 1512551676}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 80, y: 0, z: 110}
+  m_LocalPosition: {x: 80, y: 0.5, z: 110}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -34072,6 +34297,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 41.04338, y: 1, z: 11.147221}
   m_Center: {x: 0.0684433, y: 0, z: 4.823084}
+--- !u!54 &1512551679
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512551676}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!4 &1515194109 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4446991653818329853, guid: c766cd609001e4c3a8fd9647c980b954, type: 3}
@@ -35303,6 +35555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1582087660}
   - component: {fileID: 1582087661}
+  - component: {fileID: 1582087662}
   m_Layer: 0
   m_Name: WaterCollider (3)
   m_TagString: Untagged
@@ -35319,7 +35572,7 @@ Transform:
   m_GameObject: {fileID: 1582087659}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 70, y: 0, z: 80}
+  m_LocalPosition: {x: 70, y: 0.5, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -35346,6 +35599,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 31.830856, y: 1, z: 11.147221}
   m_Center: {x: -4.537819, y: 0, z: 4.823084}
+--- !u!54 &1582087662
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582087659}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &1584300908
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39664,6 +39944,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1732396463}
   - component: {fileID: 1732396464}
+  - component: {fileID: 1732396465}
   m_Layer: 0
   m_Name: WaterCollider
   m_TagString: Untagged
@@ -39680,7 +39961,7 @@ Transform:
   m_GameObject: {fileID: 1732396462}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 50}
+  m_LocalPosition: {x: 0, y: 0.5, z: 50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -39707,6 +39988,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 16.237715, y: 1, z: 31.529669}
   m_Center: {x: 3.25875, y: 0, z: -5.36814}
+--- !u!54 &1732396465
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732396462}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &1735048536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40956,6 +41264,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: aa3b0ad9d278d4e36b42657910d113e5, type: 3}
+--- !u!114 &1771485034 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5198176105974387790, guid: e3a7b75f9430b46158d4de8c93f99650, type: 3}
+  m_PrefabInstance: {fileID: 6965782411430995518}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1774513574
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45706,6 +46025,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1992931279}
   - component: {fileID: 1992931280}
+  - component: {fileID: 1992931281}
   m_Layer: 0
   m_Name: WaterCollider (9)
   m_TagString: Untagged
@@ -45722,7 +46042,7 @@ Transform:
   m_GameObject: {fileID: 1992931278}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 160, y: 0, z: 50}
+  m_LocalPosition: {x: 160, y: 0.5, z: 50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45749,6 +46069,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 36.426727, y: 1, z: 21.511742}
   m_Center: {x: -2.8397064, y: 0, z: 10.183292}
+--- !u!54 &1992931281
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992931278}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!4 &1994830420 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4446991653818329853, guid: c766cd609001e4c3a8fd9647c980b954, type: 3}
@@ -47748,6 +48095,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2078538540}
   - component: {fileID: 2078538541}
+  - component: {fileID: 2078538542}
   m_Layer: 0
   m_Name: WaterCollider (6)
   m_TagString: Untagged
@@ -47764,7 +48112,7 @@ Transform:
   m_GameObject: {fileID: 2078538539}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 80, y: 0, z: 200}
+  m_LocalPosition: {x: 80, y: 0.5, z: 200}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47791,6 +48139,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 51.152176, y: 1, z: 21.68969}
   m_Center: {x: -4.9859543, y: 0, z: 10.094318}
+--- !u!54 &2078538542
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078538539}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!4 &2081433060 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4446991653818329853, guid: c766cd609001e4c3a8fd9647c980b954, type: 3}
@@ -48718,6 +49093,14 @@ PrefabInstance:
       value: 14, 17
       objectReference: {fileID: 0}
     - target: {fileID: 7406321396727864691, guid: f2d6b5ed6092b4253bccf3c373b58ef7, type: 3}
+      propertyPath: count
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7406321396727864691, guid: f2d6b5ed6092b4253bccf3c373b58ef7, type: 3}
+      propertyPath: poolSize
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7406321396727864691, guid: f2d6b5ed6092b4253bccf3c373b58ef7, type: 3}
       propertyPath: troopPrefab
       value: 
       objectReference: {fileID: 8842334182086115981, guid: ac08108b8c50a3e458e9bf127bed04c6, type: 3}
@@ -49017,6 +49400,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1458274912172608983, guid: e3a7b75f9430b46158d4de8c93f99650, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6539419794202297042, guid: e3a7b75f9430b46158d4de8c93f99650, type: 3}
       propertyPath: m_Name
       value: Enemy Tower_Standing
@@ -49058,3 +49445,4 @@ SceneRoots:
   - {fileID: 1897295387}
   - {fileID: 6965782411430995518}
   - {fileID: 1547860302}
+  - {fileID: 146434712}

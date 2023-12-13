@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class BaseController : MonoBehaviour
 {
-    GameObject[] pool;
+    public GameObject[] pool;
     [SerializeField] GameObject troopPrefab;
     [SerializeField][Range(0, 50)] int poolSize = 7;
     [SerializeField] GameObject spawner;
     [SerializeField] bool ableToSpawn = true;
-    int count = 0;
+    public int count = 0;
 
     public Slider timerSlider;
     [SerializeField] float timer = 3f;
@@ -67,8 +67,7 @@ public class BaseController : MonoBehaviour
     private void CreateTroop()
     {
         if (Input.GetMouseButtonDown(0))
-        {
-            
+        {            
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             bool didHit = Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("TowerLayer"));
@@ -90,7 +89,7 @@ public class BaseController : MonoBehaviour
     /// <returns></returns>
     IEnumerator SpawnTimer()
     {
-        if (ableToSpawn)
+        if (ableToSpawn && count < poolSize)
         {
             ableToSpawn = false;
             timerSlider.gameObject.SetActive(true);
@@ -110,14 +109,15 @@ public class BaseController : MonoBehaviour
     {
         if (count >= poolSize)
         {
-            // Need to fix.
-            count = 0;
-            pool[count].SetActive(false);
+            ableToSpawn = false;
+            return;
         }
+        else
+        {
+            pool[count].transform.position = spawner.transform.position;
+            pool[count].SetActive(true);
 
-        pool[count].transform.position = spawner.transform.position;
-
-        pool[count].SetActive(true);
-        count++;
+            count++;
+        }   
     }
 }
