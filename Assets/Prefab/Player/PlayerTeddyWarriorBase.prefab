@@ -546,6 +546,7 @@ GameObject:
   - component: {fileID: 3700404620462701048}
   - component: {fileID: 7744334345260336869}
   - component: {fileID: 7998652922145530173}
+  - component: {fileID: 4148188422731174231}
   - component: {fileID: 6073827870044298968}
   m_Layer: 0
   m_Name: Sword
@@ -642,6 +643,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 6.5471587, y: 4.275727, z: 35.398438}
   m_Center: {x: 0.27696422, y: 1.594511, z: -19.557688}
+--- !u!54 &4148188422731174231
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4604226209912050178}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!114 &6073827870044298968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -655,7 +683,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  fight: {fileID: 5085731417583421119}
 --- !u!1 &4621381745285464115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,7 +1347,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 116

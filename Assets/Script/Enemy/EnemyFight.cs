@@ -14,7 +14,7 @@ public class EnemyFight : MonoBehaviour
     [SerializeField][Range(0.0f, 10.0f)] public float speed = 1.0f;
     [SerializeField] float obstacleBumpSpeed;
 
-    float radiusOfSatisfaction = 4f;
+    float radiusOfSatisfaction = 4.0f;
     bool astar = false;
     // Start is called before the first frame update
     void Start()
@@ -31,7 +31,7 @@ public class EnemyFight : MonoBehaviour
             attackController.target = target;
             enemyMover.StopCoroutines();
             RunKinematicArrive();
-            if((target.transform.position - transform.position).magnitude < 30)
+            if((target.transform.position - transform.position).magnitude > 30)
             {
                 target = null;
             }
@@ -54,9 +54,19 @@ public class EnemyFight : MonoBehaviour
     {
         towardsTarget = target.transform.position - transform.position;
 
+        if (target.tag == "Tower")
+        {
+            radiusOfSatisfaction = 7.0f;
+        }
+        else
+        {
+            radiusOfSatisfaction = 4.0f;
+        }
+
         // Check to see if the character is close enough to the target
         if (towardsTarget.magnitude <= radiusOfSatisfaction)
         {
+            //Debug.Log("Close enough");
             // Close enough to stop
             towardsTarget.Normalize();
 

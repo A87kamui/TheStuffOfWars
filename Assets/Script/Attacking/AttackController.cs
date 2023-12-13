@@ -20,6 +20,7 @@ public class AttackController : MonoBehaviour
     {
         timer -= Time.deltaTime;
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject == target)
@@ -34,8 +35,7 @@ public class AttackController : MonoBehaviour
             }
             timer = 3;
         }
-        print("Collision");
-    }
+    }//*/
 
     /**Will remove this code once we switch the triggering of the animation somewhere else
     private void OnTriggerStay(Collider other)
