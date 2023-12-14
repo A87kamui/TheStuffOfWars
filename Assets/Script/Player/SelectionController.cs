@@ -9,6 +9,8 @@ public class SelectionController : MonoBehaviour
     [SerializeField] private List<GameObject> selectedList = new List<GameObject>();
     private Vector3 anchor;
     [SerializeField] bool isSelected = false;
+    public GameObject indicator;
+    float timer = 3.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +58,11 @@ public class SelectionController : MonoBehaviour
                     {
                         Vector2Int temp = GridManager.instance.GetCoordinatesFromPosition(hit.point);
                         Node selectedNode = GridManager.instance.GetNode(temp);
+
+                        indicator.transform.position = new Vector3(hit.point.x, 1.5f, hit.point.z);
+                        indicator.SetActive(true);
+                        timer = 3.0f;
+
                         if (selectedNode != null && GridManager.instance.GetNode(temp).isWalkable)
                         {
                             //Set Destination of Troops selected
@@ -87,6 +94,8 @@ public class SelectionController : MonoBehaviour
             transform.localScale = new Vector3(hit.point.x - anchor.x, 0.5f, hit.point.z - anchor.z);
             transform.position = new Vector3(anchor.x + transform.localScale.x / 2, 0.25f, anchor.z + transform.localScale.z / 2);
         }
+
+        
         if (Input.GetKeyUp(KeyCode.Mouse0) && !isSelected)
         {
             if (selectedList.Count > 0)
@@ -96,12 +105,28 @@ public class SelectionController : MonoBehaviour
             }
 
             transform.localScale = new Vector3(0, 1.0f, 0);
+            transform.position = new Vector3(-10f, 0.5f, -10f);
         }
         if (Input.GetKey(KeyCode.Mouse1))
         {
             isSelected = false;
+            foreach(GameObject gb in selectedList)
+            {
+                gb.GetComponent<PlayerMover>().selected.SetActive(false);
+            }
             selectedList.Clear();
         }
+
+        
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }
+        if (timer <= 0)
+        {
+            indicator.SetActive(false);
+        }
+
     }
 
     //Adds the troops inside the selection window to the list of selected troops
@@ -110,6 +135,7 @@ public class SelectionController : MonoBehaviour
         if (other.gameObject.CompareTag("Selectable") && !selectedList.Contains(other.gameObject))
         {
             selectedList.Add(other.gameObject);
+            other.gameObject.GetComponent<PlayerMover>().selected.SetActive(true);
         }
     }
 
@@ -120,6 +146,7 @@ public class SelectionController : MonoBehaviour
         if (!isSelected && other.gameObject.CompareTag("Selectable") && selectedList.Contains(other.gameObject))
         {
             selectedList.Remove(other.gameObject);
+            other.GetComponent<PlayerMover>().selected.SetActive(false);
         }
     }
 }

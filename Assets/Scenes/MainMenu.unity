@@ -462,9 +462,59 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6004807541366023895, guid: 5638c06c4ce794034be70369698746fa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878760813666145348, guid: 5638c06c4ce794034be70369698746fa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8509961209437936306, guid: 5638c06c4ce794034be70369698746fa, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588635452613341864, guid: 5638c06c4ce794034be70369698746fa, type: 3}
+      propertyPath: m_text
+      value: 'Objective:
+
+        Destroy the enemy tower
+
+        Capture other
+        towers to gain new troops
+
+
+        Controls:
+
+        Move camera: WASD
+
+        Select
+        troops: Drag with left click
+
+        Order troops: Left click
+
+        Deselect
+        troops: Right click
+
+        Left click on towers: Spawn a troop
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588635452613341864, guid: 5638c06c4ce794034be70369698746fa, type: 3}
+      propertyPath: m_fontSize
+      value: 67.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588635452613341864, guid: 5638c06c4ce794034be70369698746fa, type: 3}
+      propertyPath: m_margin.y
+      value: -275.0504
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588635452613341864, guid: 5638c06c4ce794034be70369698746fa, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588635452613341864, guid: 5638c06c4ce794034be70369698746fa, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

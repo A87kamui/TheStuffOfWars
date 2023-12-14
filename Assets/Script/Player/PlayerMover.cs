@@ -11,6 +11,7 @@ public class PlayerMover : MonoBehaviour
     List<Node> path = new List<Node>();
     GridManager gridManager;
     PathFinder pathFinder;
+    public GameObject selected;
 
     /// <summary>
     /// Inititialize variables
